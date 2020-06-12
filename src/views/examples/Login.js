@@ -49,7 +49,7 @@ class Login extends React.Component {
       <>
         <main ref="main">
           <section className="section section-shaped section-lg">
-            <div className="shape shape-style-1 bg-gradient-default">
+            <div className="shape shape-style-1 bg-gradient-warning">
               <span />
               <span />
               <span />
@@ -64,10 +64,8 @@ class Login extends React.Component {
                 <Col lg="5">
                   <Card className="bg-secondary shadow border-0">
                     <CardHeader className="bg-white pb-3">
-                      <div className="btn-wrapper text-center">
-                        <h1>
-                          Nome do app
-                        </h1>
+                      <div className="text-center">
+                        <p className="h1">Nome do app</p>
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
