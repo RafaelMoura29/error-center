@@ -41,7 +41,7 @@ import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import CardsFooter from "components/Footers/CardsFooter.js";
 
 // index page sections
-import Download from "../IndexSections/Download.js";
+import Download from "./IndexSections/Download.js";
 
 class Landing extends React.Component {
   state = {};

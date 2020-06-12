@@ -111,6 +111,7 @@ class Login extends React.Component {
                             className="my-4"
                             color="primary"
                             type="button"
+                            onClick={ () => this.props.history.push('/main')}
                           >
                             Sign in
                           </Button>
