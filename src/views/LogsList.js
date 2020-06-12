@@ -19,17 +19,58 @@ import React from "react";
 
 // reactstrap components
 import {
+  Row,
+  Input,
+  Col
 } from "reactstrap";
 
 class LogsList extends React.Component {
   render() {
     return (
       <>
-        
-        <h1>
-            All logs page
-        </h1>
-        
+        <Row className="ml-4 mr-4">
+
+          <Col md="3" className="mt-3">
+            <Input
+              type="select"
+            >
+              <option>Produção</option>
+              <option>Homologação</option>
+              <option>Dev</option>
+            </Input>
+          </Col>
+
+          <Col md="3" className="mt-3">
+            <Input
+              type="select"
+            >
+              <option>Ordenar por</option>
+              <option>Level</option>
+              <option>Frequência</option>
+            </Input>
+          </Col>
+
+          <Col md="3" className="mt-3">
+            <Input
+              type="select"
+            >
+              <option>Buscar por</option>
+              <option>Level</option>
+              <option>Descrição</option>
+              <option>Origem</option>
+            </Input>
+          </Col>
+
+          <Col md="3" className="mt-3">
+            <Input
+              type="text"
+            >
+            </Input>
+          </Col>
+
+        </Row>
+
+
       </>
     );
   }

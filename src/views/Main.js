@@ -25,8 +25,6 @@ import {
 } from "reactstrap";
 
 // core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
 import LogsList from './LogsList.js'
 import Log from './Log.js'
 

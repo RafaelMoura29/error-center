@@ -34,10 +34,6 @@ import {
   Col
 } from "reactstrap";
 
-// core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
-
 class Login extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
