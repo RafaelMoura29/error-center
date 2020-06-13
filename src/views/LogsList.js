@@ -75,7 +75,7 @@ class LogsList extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr onClick={() => this.props.history.push('/main/log-page')}>
                   <td className="text-center" >
                       <Input type="checkbox"  />
                   </td>

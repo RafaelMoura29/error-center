@@ -25,9 +25,12 @@ class Log extends React.Component {
   render() {
     return (
       <>
-        <h1>
-            log page
-        </h1>
+        <button onClick={() => this.props.history.push('/main/logsList-page')}>
+          Voltar
+        </button>
+        <h2>
+          Informações do log...
+        </h2>
       </>
     );
   }
