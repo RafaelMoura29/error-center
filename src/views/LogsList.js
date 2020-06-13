@@ -21,7 +21,9 @@ import React from "react";
 import {
   Row,
   Input,
-  Col
+  Col,
+  Table,
+  Label,
 } from "reactstrap";
 
 class LogsList extends React.Component {
@@ -31,9 +33,7 @@ class LogsList extends React.Component {
         <Row className="ml-4 mr-4">
 
           <Col md="3" className="mt-3">
-            <Input
-              type="select"
-            >
+            <Input type="select" >
               <option>Produção</option>
               <option>Homologação</option>
               <option>Dev</option>
@@ -41,9 +41,7 @@ class LogsList extends React.Component {
           </Col>
 
           <Col md="3" className="mt-3">
-            <Input
-              type="select"
-            >
+            <Input type="select" >
               <option>Ordenar por</option>
               <option>Level</option>
               <option>Frequência</option>
@@ -51,9 +49,7 @@ class LogsList extends React.Component {
           </Col>
 
           <Col md="3" className="mt-3">
-            <Input
-              type="select"
-            >
+            <Input type="select">
               <option>Buscar por</option>
               <option>Level</option>
               <option>Descrição</option>
@@ -62,15 +58,35 @@ class LogsList extends React.Component {
           </Col>
 
           <Col md="3" className="mt-3">
-            <Input
-              type="text"
-            >
-            </Input>
+            <Input type="text" />
           </Col>
 
         </Row>
 
-
+        <Row className="ml-4 mr-4 mt-4">
+          <Col md="12" >
+            <Table striped bordered hover responsive="md">
+              <thead>
+                <tr>
+                  <th style={{ width: '5%' }}></th>
+                  <th style={{ width: '15%' }}>Level</th>
+                  <th style={{ width: '60%' }}>Log</th>
+                  <th style={{ width: '20%' }}>Eventos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="text-center" >
+                      <Input type="checkbox"  />
+                  </td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
       </>
     );
   }

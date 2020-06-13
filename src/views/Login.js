@@ -107,7 +107,7 @@ class Login extends React.Component {
                             className="my-4"
                             color="primary"
                             type="button"
-                            onClick={ () => this.props.history.push('/main')}
+                            onClick={() => this.props.history.push('/main')}
                           >
                             Sign in
                           </Button>
@@ -129,8 +129,12 @@ class Login extends React.Component {
                 </Col>
               </Row>
             </Container>
+            <footer className=" footer" style={{ backgroundColor: 'transparent' }}>
+              <hr />
+            </footer>
           </section>
         </main>
+
       </>
     );
   }

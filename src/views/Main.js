@@ -40,20 +40,11 @@ class Main extends React.Component {
 
         <BrowserRouter>
           <Switch>
-          <Route
-              path="/main/logsList-page"
-              exact
-              render={props => <LogsList {...props} />}
-            />
-            <Route
-              path="/main/log-page"
-              exact
-              render={props => <Log {...props} />}
-            />
+          <Route path="/main/logsList-page" exact render={props => <LogsList {...props} />} />
+            <Route path="/main/log-page" exact render={props => <Log {...props} />} />
             <Redirect to="/main/logsList-page" />
           </Switch>
         </BrowserRouter>
-
       </>
     );
   }

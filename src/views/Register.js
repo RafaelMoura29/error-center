@@ -120,6 +120,9 @@ class Register extends React.Component {
                 </Col>
               </Row>
             </Container>
+            <footer className=" footer" style={{ backgroundColor: 'transparent' }}>
+              <hr />
+            </footer>
           </section>
         </main>
       </>
