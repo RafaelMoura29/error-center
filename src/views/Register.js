@@ -109,6 +109,7 @@ class Register extends React.Component {
                             className="mt-4"
                             color="primary"
                             type="button"
+                            onClick={() => this.props.history.push('/login-page')}
                           >
                             Create account
                           </Button>
