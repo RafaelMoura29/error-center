@@ -30,9 +30,8 @@ class Main extends React.Component {
     return (
       <>
         <Row id="row-navbar">
-
           <Col md="12" >
-            <p className="ml-4 mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
+            <p className="mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
           </Col>
         </Row>
 
