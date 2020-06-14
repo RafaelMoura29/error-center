@@ -18,8 +18,7 @@
 import React from "react";
 
 // reactstrap components
-import {
-} from "reactstrap";
+import { Row, Col, Badge } from "reactstrap";
 
 class Log extends React.Component {
   render() {
@@ -28,9 +27,52 @@ class Log extends React.Component {
         <button onClick={() => this.props.history.push('/main/logsList-page')}>
           Voltar
         </button>
-        <h2>
-          Informações do log...
-        </h2>
+
+        <Row className="pl-4 pr-4">
+          <Col md="12">
+            <h2>
+              Error no 127.0.0.1 em 24;05/2019 10:15
+            </h2>
+          </Col>
+        </Row>
+
+        <Row className="pl-4 pr-4">
+          <Col md="2">
+            <Badge color="danger">ERROR</Badge>
+          </Col>
+          <Col md="4">
+            <p className="display-4 ">Eventos: 1000</p>
+          </Col>
+          <Col md="6">
+            <p className="display-4 ">Coletado por: Token do usuário José da Silva</p>
+          </Col>
+        </Row>
+
+        <Row className="pl-4 pr-4">
+          <Col md="12">
+            <h3>
+              Título
+          </h3>
+          </Col>
+
+          <Col md="12">
+            <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </Col>
+
+          <Col md="12">
+            <h3>Detalhes</h3>
+          </Col>
+
+          <Col md="12">
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+          </Col>
+
+        </Row>
+
       </>
     );
   }

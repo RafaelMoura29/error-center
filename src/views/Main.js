@@ -18,30 +18,28 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-// reactstrap components
-import {
-  Row,
-  Col
-} from "reactstrap";
+import { Row, Col } from "reactstrap";
 
-// core components
 import LogsList from './LogsList.js'
 import Log from './Log.js'
+
+import './style.css'
 
 class Main extends React.Component {
   render() {
     return (
       <>
-        <Row style={{backgroundColor:'#fba440'}}>
+        <Row id="row-navbar">
+
           <Col md="12" >
-            <p className="display-4 ml-4 mt-3 ">Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
+            <p className="ml-4 mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
           </Col>
         </Row>
 
         <BrowserRouter>
           <Switch>
-          <Route path="/main/logsList-page" exact render={props => <LogsList {...props} />} />
-            <Route path="/main/log-page" exact render={props => <Log {...props} />} />
+            <Route path="/main/logsList-page" exact component={LogsList} />
+            <Route path="/main/log-page" exact component={Log} />
             <Redirect to="/main/logsList-page" />
           </Switch>
         </BrowserRouter>

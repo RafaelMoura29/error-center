@@ -23,14 +23,14 @@ import {
   Input,
   Col,
   Table,
-  Label,
+  Button,
 } from "reactstrap";
 
 class LogsList extends React.Component {
   render() {
     return (
       <>
-        <Row className="ml-4 mr-4">
+        <Row className="pl-4 pr-4 pb-4">
 
           <Col md="3" className="mt-3">
             <Input type="select" >
@@ -63,10 +63,24 @@ class LogsList extends React.Component {
 
         </Row>
 
-        <Row className="ml-4 mr-4 mt-4">
+        <Row className="pl-4 pr-4 pb-4" >
+          <Col md="12">
+            <Button color="primary" type="button" disabled>
+              Arquivar
+            </Button>
+
+            <Button color="danger" type="button" disabled>
+              Apagar
+            </Button>
+          </Col>
+
+        </Row>
+
+        <Row className="pl-4 pr-4">
+
           <Col md="12" >
             <Table striped bordered hover responsive="md">
-              <thead>
+              <thead style={{ backgroundColor: '#ddd' }}>
                 <tr>
                   <th style={{ width: '5%' }}></th>
                   <th style={{ width: '15%' }}>Level</th>
@@ -76,8 +90,7 @@ class LogsList extends React.Component {
               </thead>
               <tbody>
                 <tr onClick={() => this.props.history.push('/main/log-page')}>
-                  <td className="text-center" >
-                      <Input type="checkbox"  />
+                  <td >
                   </td>
                   <td>Mark</td>
                   <td>Otto</td>
@@ -86,6 +99,7 @@ class LogsList extends React.Component {
               </tbody>
             </Table>
           </Col>
+
         </Row>
       </>
     );
