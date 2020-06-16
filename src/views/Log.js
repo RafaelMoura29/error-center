@@ -2,7 +2,6 @@ import React from "react";
 
 // reactstrap components
 import { Button, Card, Container, Row, Col } from "reactstrap";
-
 import { Link } from "react-router-dom";
 
 // core components
@@ -21,7 +20,8 @@ class Profile extends React.Component {
         <main className="profile-page" ref="main">
           <section className="section-profile-cover section-shaped my-0">
             {/* Circles background */}
-            <div className="shape shape-style-1" style={{backgroundColor: '#eee'}}>
+            <div className="shape shape-style-1 alpha-4" style={{background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)'}}>
+              <span />
               <span />
               <span />
               <span />
@@ -32,7 +32,7 @@ class Profile extends React.Component {
           </section>
           <section className="section" style={{backgroundColor: '#eee'}}>
             <Container>
-              <Card className="card-profile shadow" style={{ marginTop: '-500px' }}>
+              <Card className="card-profile shadow" style={{ marginTop: '-400px' }}>
                 <div className="px-4">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">

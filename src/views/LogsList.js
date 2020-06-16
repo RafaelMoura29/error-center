@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import {
@@ -24,83 +25,133 @@ import {
   Col,
   Table,
   Button,
+  Container,
+  Card
 } from "reactstrap";
 
 class LogsList extends React.Component {
   render() {
     return (
       <>
-        <Row className="pl-4 pr-4 pb-4">
+        <main className="profile-page" ref="main">
+          <section className="section-profile-cover section-shaped my-0">
+            {/* Circles background */}
+            <div className="shape shape-style-1 alpha-4" style={{ background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)' }}>
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </section>
+          <section className="section" style={{ backgroundColor: '#eee' }}>
+            <Container>
+              <Card className="card-profile shadow" style={{ marginTop: '-400px' }}>
+                <div className="px-4">
 
-          <Col md="3" className="mt-3">
-            <Input type="select" >
-              <option>Produção</option>
-              <option>Homologação</option>
-              <option>Dev</option>
-            </Input>
-          </Col>
+                  <Row className="pl-4 pr-4 pb-4">
 
-          <Col md="3" className="mt-3">
-            <Input type="select" >
-              <option>Ordenar por</option>
-              <option>Level</option>
-              <option>Frequência</option>
-            </Input>
-          </Col>
+                    <Col md="3" className="mt-3">
+                      <Input type="select" >
+                        <option>Produção</option>
+                        <option>Homologação</option>
+                        <option>Dev</option>
+                      </Input>
+                    </Col>
 
-          <Col md="3" className="mt-3">
-            <Input type="select">
-              <option>Buscar por</option>
-              <option>Level</option>
-              <option>Descrição</option>
-              <option>Origem</option>
-            </Input>
-          </Col>
+                    <Col md="3" className="mt-3">
+                      <Input type="select" >
+                        <option>Ordenar por</option>
+                        <option>Level</option>
+                        <option>Frequência</option>
+                      </Input>
+                    </Col>
 
-          <Col md="3" className="mt-3">
-            <Input type="text" />
-          </Col>
+                    <Col md="3" className="mt-3">
+                      <Input type="select">
+                        <option>Buscar por</option>
+                        <option>Level</option>
+                        <option>Descrição</option>
+                        <option>Origem</option>
+                      </Input>
+                    </Col>
 
-        </Row>
+                    <Col md="3" className="mt-3">
+                      <Input type="text" />
+                    </Col>
 
-        <Row className="pl-4 pr-4 pb-4" >
-          <Col md="12">
-            <Button color="primary" type="button" disabled>
-              Arquivar
-            </Button>
+                  </Row>
 
-            <Button color="danger" type="button" disabled>
-              Apagar
-            </Button>
-          </Col>
+                  <Row className="pl-4 pr-4 pb-4" >
+                    <Col md="12">
+                      <Button color="primary" type="button" disabled>
+                        Arquivar
+  </Button>
 
-        </Row>
+                      <Button color="danger" type="button" disabled>
+                        Apagar
+  </Button>
+                    </Col>
 
-        <Row className="pl-4 pr-4">
+                  </Row>
 
-          <Col md="12" >
-            <Table striped bordered hover responsive="md">
-              <thead style={{ backgroundColor: '#ddd' }}>
-                <tr>
-                  <th style={{ width: '5%' }}></th>
-                  <th style={{ width: '15%' }}>Level</th>
-                  <th style={{ width: '60%' }}>Log</th>
-                  <th style={{ width: '20%' }}>Eventos</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr onClick={() => this.props.history.push('/main/log-page')}>
-                  <td >
-                  </td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Col>
+                  <Row className="pl-4 pr-4">
 
-        </Row>
+                    <Col md="12" >
+                      <Table striped bordered hover responsive="md">
+                        <thead style={{ backgroundColor: '#ddd' }}>
+                          <tr>
+                            <th style={{ width: '5%' }}></th>
+                            <th style={{ width: '15%' }}>Level</th>
+                            <th style={{ width: '60%' }}>Log</th>
+                            <th style={{ width: '20%' }}>Eventos</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                            <td >
+                            </td>
+                            <td>321</td>
+                            <td>Algum log de erro</td>
+                            <td>1000</td>
+                          </tr>
+                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                            <td >
+                            </td>
+                            <td>321</td>
+                            <td>Algum log de erro</td>
+                            <td>1000</td>
+                          </tr>
+                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                            <td >
+                            </td>
+                            <td>321</td>
+                            <td>Algum log de erro</td>
+                            <td>1000</td>
+                          </tr>
+                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                            <td >
+                            </td>
+                            <td>321</td>
+                            <td>Algum log de erro</td>
+                            <td>1000</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </Col>
+
+                  </Row>
+
+                </div>
+              </Card>
+            </Container>
+          </section>
+        </main>
+
+
+
       </>
     );
   }
