@@ -32,7 +32,7 @@ class Profile extends React.Component {
           </section>
           <section className="section" style={{backgroundColor: '#eee'}}>
             <Container>
-              <Card className="card-profile shadow" style={{ marginTop: '-400px' }}>
+              <Card className="card-profile shadow main-card">
                 <div className="px-4">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">

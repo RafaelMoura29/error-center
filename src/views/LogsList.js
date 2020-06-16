@@ -48,7 +48,7 @@ class LogsList extends React.Component {
           </section>
           <section className="section" style={{ backgroundColor: '#eee' }}>
             <Container>
-              <Card className="card-profile shadow" style={{ marginTop: '-400px' }}>
+              <Card className="card-profile shadow main-card">
                 <div className="px-4">
 
                   <Row className="pl-4 pr-4 pb-4">

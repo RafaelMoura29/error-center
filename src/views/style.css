@@ -4,3 +4,13 @@
     color: #fff;
     margin-right: 0 !important;
 }
+
+.main-card{
+    margin-top: -400px !important;
+}
+
+@media screen and (max-width: 992px) {
+    .main-card{
+        margin-top: -250px !important;
+    }
+}

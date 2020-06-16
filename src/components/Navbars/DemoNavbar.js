@@ -109,25 +109,6 @@ class DemoNavbar extends React.Component {
                     </Col>
                   </Row>
                 </div>
-
-                <Nav className="navbar-nav-hover align-items-lg-center ml-lg-auto" navbar>
-                  <UncontrolledDropdown nav>
-                    <DropdownToggle nav>
-                      <span className="nav-link-inner--text" style={{ color: '#fff', fontSize: 40 }}>
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                      </span>
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem to="/landing-page" tag={Link}>
-                        Perfil
-                      </DropdownItem>
-                      <DropdownItem to="/profile-page" tag={Link}>
-                        Sair
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </Nav>
-
               </UncontrolledCollapse>
             </Container>
           </Navbar>
