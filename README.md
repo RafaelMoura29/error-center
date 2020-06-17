@@ -1,4 +1,4 @@
-# Comando para rodar o projeto na sua máquina
+# Comandos para iniciar a aplicação
 
 ## Primeiros passos
 

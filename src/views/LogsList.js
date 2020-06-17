@@ -88,11 +88,11 @@ class LogsList extends React.Component {
                     <Col md="12">
                       <Button color="primary" type="button" disabled>
                         Arquivar
-  </Button>
+                      </Button>
 
                       <Button color="danger" type="button" disabled>
                         Apagar
-  </Button>
+                      </Button>
                     </Col>
 
                   </Row>
@@ -105,38 +105,47 @@ class LogsList extends React.Component {
                           <tr>
                             <th style={{ width: '5%' }}></th>
                             <th style={{ width: '15%' }}>Level</th>
-                            <th style={{ width: '60%' }}>Log</th>
+                            <th style={{ width: '50%' }}>Log</th>
                             <th style={{ width: '20%' }}>Eventos</th>
+                            <th style={{ width: '10%' }}></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                          <tr>
                             <td >
+                              <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
                             <td>321</td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
+                            <td><Link to="/main/log-page">Detalhes</Link></td>
                           </tr>
-                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                          <tr>
                             <td >
+                              <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
                             <td>321</td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
+                            <td><Link to="/main/log-page">Detalhes</Link></td>
                           </tr>
-                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                          <tr>
                             <td >
+                              <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
                             <td>321</td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
+                            <td><Link to="/main/log-page">Detalhes</Link></td>
                           </tr>
-                          <tr onClick={() => this.props.history.push('/main/log-page')}>
+                          <tr>
                             <td >
+                              <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
                             <td>321</td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
+                            <td><Link to="/main/log-page">Detalhes</Link></td>
                           </tr>
                         </tbody>
                       </Table>

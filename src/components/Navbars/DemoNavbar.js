@@ -79,11 +79,8 @@ class DemoNavbar extends React.Component {
               >
                 <span className="nav-link-inner--text ml-1">
                   Bem vindo fulano! seu token é tananan
-                    </span>
+                </span>
               </Button>
-              <button className="navbar-toggler" id="navbar_global">
-                <span className="navbar-toggler-icon" />
-              </button>
               <UncontrolledCollapse
                 toggler="#navbar_global"
                 navbar
