@@ -30,6 +30,20 @@ import {
 } from "reactstrap";
 
 class LogsList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectAmbiente: 'Produção',
+      selectTipoOrdenagem: 'Ordenar por',
+      selectTipoBusca: 'selectTipoBusca',
+      inputBusca: ''
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
   render() {
     return (
       <>
@@ -54,32 +68,32 @@ class LogsList extends React.Component {
                   <Row className="pl-4 pr-4 pb-4">
 
                     <Col md="3" className="mt-3">
-                      <Input type="select" >
-                        <option>Produção</option>
-                        <option>Homologação</option>
-                        <option>Dev</option>
+                      <Input type="select" name="selectAmbiente" onChange={this.handleChange} value={this.state.selectAmbiente}>
+                        <option value="Produção">Produção</option>
+                        <option value="Homologação">Homologação</option>
+                        <option value="Dev">Dev</option>
                       </Input>
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="select" >
-                        <option>Ordenar por</option>
-                        <option>Level</option>
-                        <option>Frequência</option>
+                      <Input type="select" name="selectTipoOrdenagem" onChange={this.handleChange} value={this.state.selectTipoOrdenagem}>
+                        <option value="Ordenar por">Ordenar por</option>
+                        <option value="Level">Level</option>
+                        <option value="Frequência">Frequência</option>
                       </Input>
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="select">
-                        <option>Buscar por</option>
-                        <option>Level</option>
-                        <option>Descrição</option>
-                        <option>Origem</option>
+                      <Input type="select" name="selectTipoBusca" onChange={this.handleChange} value={this.state.selectTipoBusca}>
+                        <option value="Buscar por">Buscar por</option>
+                        <option value="Level">Level</option>
+                        <option value="Descrição">Descrição</option>
+                        <option value="Origem">Origem</option>
                       </Input>
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="text" />
+                      <Input type="text" name="inputBusca" onChange={this.handleChange} value={this.state.inputBusca} />
                     </Col>
 
                   </Row>
