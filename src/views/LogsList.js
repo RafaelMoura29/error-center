@@ -26,7 +26,8 @@ import {
   Table,
   Button,
   Container,
-  Card
+  Card,
+  Badge
 } from "reactstrap";
 
 class LogsList extends React.Component {
@@ -68,7 +69,12 @@ class LogsList extends React.Component {
                   <Row className="pl-4 pr-4 pb-4">
 
                     <Col md="3" className="mt-3">
-                      <Input type="select" name="selectAmbiente" onChange={this.handleChange} value={this.state.selectAmbiente}>
+                      <Input 
+                        type="select" 
+                        name="selectAmbiente" 
+                        onChange={this.handleChange} 
+                        value={this.state.selectAmbiente}
+                      >
                         <option value="Produção">Produção</option>
                         <option value="Homologação">Homologação</option>
                         <option value="Dev">Dev</option>
@@ -76,7 +82,12 @@ class LogsList extends React.Component {
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="select" name="selectTipoOrdenagem" onChange={this.handleChange} value={this.state.selectTipoOrdenagem}>
+                      <Input 
+                        type="select" 
+                        name="selectTipoOrdenagem" 
+                        onChange={this.handleChange} 
+                        value={this.state.selectTipoOrdenagem}
+                      >
                         <option value="Ordenar por">Ordenar por</option>
                         <option value="Level">Level</option>
                         <option value="Frequência">Frequência</option>
@@ -84,7 +95,12 @@ class LogsList extends React.Component {
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="select" name="selectTipoBusca" onChange={this.handleChange} value={this.state.selectTipoBusca}>
+                      <Input 
+                        type="select" 
+                        name="selectTipoBusca" 
+                        onChange={this.handleChange} 
+                        value={this.state.selectTipoBusca}
+                      >
                         <option value="Buscar por">Buscar por</option>
                         <option value="Level">Level</option>
                         <option value="Descrição">Descrição</option>
@@ -129,7 +145,7 @@ class LogsList extends React.Component {
                             <td >
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td>321</td>
+                            <td><Badge color="danger">ERROR</Badge></td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
                             <td><Link to="/main/log-page">Detalhes</Link></td>
@@ -138,7 +154,7 @@ class LogsList extends React.Component {
                             <td >
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td>321</td>
+                            <td><Badge color="danger">ERROR</Badge></td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
                             <td><Link to="/main/log-page">Detalhes</Link></td>
@@ -147,7 +163,7 @@ class LogsList extends React.Component {
                             <td >
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td>321</td>
+                            <td><Badge color="danger">ERROR</Badge></td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
                             <td><Link to="/main/log-page">Detalhes</Link></td>
@@ -156,7 +172,7 @@ class LogsList extends React.Component {
                             <td >
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td>321</td>
+                            <td><Badge color="danger">ERROR</Badge></td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
                             <td><Link to="/main/log-page">Detalhes</Link></td>
@@ -172,8 +188,6 @@ class LogsList extends React.Component {
             </Container>
           </section>
         </main>
-
-
 
       </>
     );

@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/ab062ab9-a14b-4a33-87fd-a98fd71944eb/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/SuperLogs",
+    "appService.deploySubpath": "build"
+}
