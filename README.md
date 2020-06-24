@@ -1,7 +1,5 @@
 # Comandos para iniciar a aplicação
 
-## Primeiros passos
-
 ### Clone o repositório
 
 ```sh
