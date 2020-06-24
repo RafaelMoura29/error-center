@@ -34,17 +34,26 @@ import {
   Col
 } from "reactstrap";
 
-// core components
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
-import SimpleFooter from "components/Footers/SimpleFooter.js";
-
 class Register extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      registerNome: '',
+      registerEmail: '',
+      registerSenha: ''
+    }
+  }
+
+  handleChange = (event) => this.setState({[event.target.name]: event.target.value})
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
   render() {
+    let {registerEmail, registerNome, registerSenha} = this.state
     return (
       <>
         <main ref="main">
@@ -77,7 +86,13 @@ class Register extends React.Component {
                                 <i className="ni ni-hat-3" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Name" type="text" />
+                            <Input 
+                              placeholder="Nome" 
+                              name="registerNome" 
+                              value={registerNome} 
+                              onChange={this.handleChange} 
+                              type="text" 
+                            />
                           </InputGroup>
                         </FormGroup>
                         <FormGroup>
@@ -87,7 +102,13 @@ class Register extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Email" type="email" />
+                            <Input 
+                              placeholder="Email" 
+                              name="registerEmail" 
+                              value={registerEmail} 
+                              onChange={this.handleChange} 
+                              type="email" 
+                            />
                           </InputGroup>
                         </FormGroup>
                         <FormGroup>
@@ -99,8 +120,11 @@ class Register extends React.Component {
                             </InputGroupAddon>
                             <Input
                               placeholder="Password"
-                              type="password"
                               autoComplete="off"
+                              name="registerSenha"
+                              value={registerSenha}
+                              onChange={this.handleChange}
+                              type="password"
                             />
                           </InputGroup>
                         </FormGroup>
@@ -117,6 +141,17 @@ class Register extends React.Component {
                       </Form>
                     </CardBody>
                   </Card>
+                  <Row className="mt-3">
+                    <Col xs="6">
+                      <a
+                        className="text-light"
+                        href="#pablo"
+                        onClick={e => this.props.history.push('/register-page')}
+                      >
+                        <small>Fazer Login</small>
+                      </a>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Container>

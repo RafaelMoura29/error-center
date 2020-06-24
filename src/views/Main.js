@@ -19,21 +19,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 
-import { Row, Col,Button,
-  UncontrolledCollapse,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown,
-  Media,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  UncontrolledTooltip } from "reactstrap";
-
 import LogsList from './LogsList.js'
 import Log from './Log.js'
 

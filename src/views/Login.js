@@ -35,12 +35,25 @@ import {
 } from "reactstrap";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loginEmail: '',
+      loginSenha: ''
+    }
+  }
+
+  handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+
   render() {
+    let { loginEmail, loginSenha } = this.state
+
     return (
       <>
         <main ref="main">
@@ -61,7 +74,7 @@ class Login extends React.Component {
                   <Card className="bg-secondary shadow border-0">
                     <CardHeader className="bg-white pb-3">
                       <div className="text-center">
-                        <p className="h1">Nome do app</p>
+                        <p className="h1">Super Logs</p>
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
@@ -73,7 +86,13 @@ class Login extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Email" type="email" />
+                            <Input 
+                              placeholder="Email" 
+                              type="email" 
+                              name="loginEmail"
+                              value={loginEmail}
+                              onChange={this.handleChange}
+                            />
                           </InputGroup>
                         </FormGroup>
                         <FormGroup>
@@ -87,21 +106,12 @@ class Login extends React.Component {
                               placeholder="Password"
                               type="password"
                               autoComplete="off"
+                              name="loginSenha"
+                              value={loginSenha}
+                              onChange={this.handleChange}
                             />
                           </InputGroup>
                         </FormGroup>
-                        <div className="custom-control custom-control-alternative custom-checkbox">
-                          <input
-                            className="custom-control-input"
-                            id=" customCheckLogin"
-                            type="checkbox"
-                          />
-                          <label
-                            className="custom-control-label"
-                            htmlFor=" customCheckLogin"
-                          >
-                          </label>
-                        </div>
                         <div className="text-center">
                           <Button
                             className="my-4"
@@ -122,7 +132,7 @@ class Login extends React.Component {
                         href="#pablo"
                         onClick={e => this.props.history.push('/register-page')}
                       >
-                        <small>Create new account</small>
+                        <small>Criar Conta</small>
                       </a>
                     </Col>
                   </Row>
