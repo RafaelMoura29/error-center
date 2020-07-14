@@ -31,20 +31,21 @@ import {
   InputGroup,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 
 class Register extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      registerNome: '',
-      registerEmail: '',
-      registerSenha: ''
-    }
+      registerNome: "",
+      registerEmail: "",
+      registerSenha: "",
+    };
   }
 
-  handleChange = (event) => this.setState({[event.target.name]: event.target.value})
+  handleChange = (event) =>
+    this.setState({ [event.target.name]: event.target.value });
 
   componentDidMount() {
     document.documentElement.scrollTop = 0;
@@ -52,8 +53,13 @@ class Register extends React.Component {
     this.refs.main.scrollTop = 0;
   }
 
+  register = () => {
+    alert("Implementação do código de cadastro!");
+    this.props.history.push("/login-page");
+  };
+
   render() {
-    let {registerEmail, registerNome, registerSenha} = this.state
+    let { registerEmail, registerNome, registerSenha } = this.state;
     return (
       <>
         <main ref="main">
@@ -86,12 +92,12 @@ class Register extends React.Component {
                                 <i className="ni ni-hat-3" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input 
-                              placeholder="Nome" 
-                              name="registerNome" 
-                              value={registerNome} 
-                              onChange={this.handleChange} 
-                              type="text" 
+                            <Input
+                              placeholder="Nome"
+                              name="registerNome"
+                              value={registerNome}
+                              onChange={this.handleChange}
+                              type="text"
                             />
                           </InputGroup>
                         </FormGroup>
@@ -102,12 +108,12 @@ class Register extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input 
-                              placeholder="Email" 
-                              name="registerEmail" 
-                              value={registerEmail} 
-                              onChange={this.handleChange} 
-                              type="email" 
+                            <Input
+                              placeholder="Email"
+                              name="registerEmail"
+                              value={registerEmail}
+                              onChange={this.handleChange}
+                              type="email"
                             />
                           </InputGroup>
                         </FormGroup>
@@ -133,9 +139,9 @@ class Register extends React.Component {
                             className="mt-4"
                             color="primary"
                             type="button"
-                            onClick={() => this.props.history.push('/login-page')}
+                            onClick={this.register}
                           >
-                            Create account
+                            Criar conta
                           </Button>
                         </div>
                       </Form>
@@ -146,7 +152,7 @@ class Register extends React.Component {
                       <a
                         className="text-light"
                         href="#pablo"
-                        onClick={e => this.props.history.push('/register-page')}
+                        onClick={(e) => this.props.history.push("/login-page")}
                       >
                         <small>Fazer Login</small>
                       </a>
@@ -155,7 +161,10 @@ class Register extends React.Component {
                 </Col>
               </Row>
             </Container>
-            <footer className=" footer" style={{ backgroundColor: 'transparent' }}>
+            <footer
+              className=" footer"
+              style={{ backgroundColor: "transparent" }}
+            >
               <hr />
             </footer>
           </section>

@@ -1,22 +1,32 @@
-import React from "react";
+import React from 'react'
 
 // reactstrap components
-import { Card, Container, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Card, Container, Row, Col } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    document.documentElement.scrollTop = 0
+    document.scrollingElement.scrollTop = 0
+    this.refs.main.scrollTop = 0
   }
+
+  getLog = () => {
+    console.log('Implementação do código para listar o log!')
+  }
+
   render() {
     return (
       <>
         <main className="profile-page" ref="main">
           <section className="section-profile-cover section-shaped my-0">
             {/* Circles background */}
-            <div className="shape shape-style-1 alpha-4" style={{background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)'}}>
+            <div
+              className="shape shape-style-1 alpha-4"
+              style={{
+                background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)'
+              }}
+            >
               <span />
               <span />
               <span />
@@ -26,18 +36,18 @@ class Profile extends React.Component {
               <span />
             </div>
           </section>
-          <section className="section" style={{backgroundColor: '#eee'}}>
+          <section className="section" style={{ backgroundColor: '#eee' }}>
             <Container>
               <Card className="card-profile shadow main-card">
                 <div className="px-4">
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
-                        <a href="#pablo" onClick={e => e.preventDefault()}>
+                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
                           <img
                             alt="..."
                             className="rounded-circle"
-                            src={require("assets/img/theme/team-4-800x800.jpg")}
+                            src={require('assets/img/theme/team-4-800x800.jpg')}
                           />
                         </a>
                       </div>
@@ -45,20 +55,22 @@ class Profile extends React.Component {
                     <Col
                       className="order-lg-3 text-lg-right align-self-lg-center"
                       lg="4"
-                    >
-                    </Col>
+                    ></Col>
                     <Col className="order-lg-1" lg="4">
                       <div className="card-profile-stats d-flex justify-content-left">
                         <div>
-                          <Link to="/main/logsList">{'<- voltar'}</Link>
+                          <Link
+                            style={{ position: 'absolute', left: '1px' }}
+                            to="/main/logsList"
+                          >
+                            {'<- voltar'}
+                          </Link>
                         </div>
                       </div>
                     </Col>
                   </Row>
                   <div className="text-center mt-6">
-                    <h3>
-                      Error no 127.0.0.1 em 24;05/2019 10:15
-                    </h3>
+                    <h3>Error no 127.0.0.1 em 24;05/2019 10:15</h3>
                     <div className="h6 font-weight-300">
                       <i className="ni location_pin mr-2" />
                       Coletado por: Token do usuário José da Silva
@@ -75,19 +87,23 @@ class Profile extends React.Component {
                           Título
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt
                         </p>
                         <h3 className=" text-primary font-weight-light mb-2">
                           Detalhes
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt
                         </p>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt
                         </p>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt
                         </p>
                       </Col>
                     </Row>
@@ -98,8 +114,8 @@ class Profile extends React.Component {
           </section>
         </main>
       </>
-    );
+    )
   }
 }
 
-export default Profile;
+export default Profile

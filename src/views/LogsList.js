@@ -15,8 +15,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -28,7 +28,7 @@ import {
   Container,
   Card,
   Badge
-} from "reactstrap";
+} from 'reactstrap'
 
 class LogsList extends React.Component {
   constructor(props) {
@@ -45,13 +45,26 @@ class LogsList extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
+  componentDidMount = () => {
+    this.getLogs()
+  }
+
+  getLogs = () => {
+    console.log('Implementação do código para listagem dos logs!')
+  }
+
   render() {
     return (
       <>
         <main className="profile-page" ref="main">
           <section className="section-profile-cover section-shaped my-0">
             {/* Circles background */}
-            <div className="shape shape-style-1 alpha-4" style={{ background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)' }}>
+            <div
+              className="shape shape-style-1 alpha-4"
+              style={{
+                background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)'
+              }}
+            >
               <span />
               <span />
               <span />
@@ -65,14 +78,12 @@ class LogsList extends React.Component {
             <Container>
               <Card className="card-profile shadow main-card">
                 <div className="px-4">
-
                   <Row className="pl-4 pr-4 pb-4">
-
                     <Col md="3" className="mt-3">
-                      <Input 
-                        type="select" 
-                        name="selectAmbiente" 
-                        onChange={this.handleChange} 
+                      <Input
+                        type="select"
+                        name="selectAmbiente"
+                        onChange={this.handleChange}
                         value={this.state.selectAmbiente}
                       >
                         <option value="Produção">Produção</option>
@@ -82,10 +93,10 @@ class LogsList extends React.Component {
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input 
-                        type="select" 
-                        name="selectTipoOrdenagem" 
-                        onChange={this.handleChange} 
+                      <Input
+                        type="select"
+                        name="selectTipoOrdenagem"
+                        onChange={this.handleChange}
                         value={this.state.selectTipoOrdenagem}
                       >
                         <option value="Ordenar por">Ordenar por</option>
@@ -95,10 +106,10 @@ class LogsList extends React.Component {
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input 
-                        type="select" 
-                        name="selectTipoBusca" 
-                        onChange={this.handleChange} 
+                      <Input
+                        type="select"
+                        name="selectTipoBusca"
+                        onChange={this.handleChange}
                         value={this.state.selectTipoBusca}
                       >
                         <option value="Buscar por">Buscar por</option>
@@ -109,12 +120,16 @@ class LogsList extends React.Component {
                     </Col>
 
                     <Col md="3" className="mt-3">
-                      <Input type="text" name="inputBusca" onChange={this.handleChange} value={this.state.inputBusca} />
+                      <Input
+                        type="text"
+                        name="inputBusca"
+                        onChange={this.handleChange}
+                        value={this.state.inputBusca}
+                      />
                     </Col>
-
                   </Row>
 
-                  <Row className="pl-4 pr-4 pb-4" >
+                  <Row className="pl-4 pr-4 pb-4">
                     <Col md="12">
                       <Button color="primary" type="button" disabled>
                         Arquivar
@@ -124,12 +139,10 @@ class LogsList extends React.Component {
                         Apagar
                       </Button>
                     </Col>
-
                   </Row>
 
                   <Row className="pl-4 pr-4">
-
-                    <Col md="12" >
+                    <Col md="12">
                       <Table striped bordered hover responsive="md">
                         <thead style={{ backgroundColor: '#ddd' }}>
                           <tr>
@@ -142,56 +155,69 @@ class LogsList extends React.Component {
                         </thead>
                         <tbody>
                           <tr>
-                            <td >
+                            <td>
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td><Badge color="danger">ERROR</Badge></td>
+                            <td>
+                              <Badge color="danger">ERROR</Badge>
+                            </td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
-                            <td><Link to="/main/log-page">Detalhes</Link></td>
+                            <td>
+                              <Link to="/main/log-page">Detalhes</Link>
+                            </td>
                           </tr>
                           <tr>
-                            <td >
+                            <td>
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td><Badge color="danger">ERROR</Badge></td>
+                            <td>
+                              <Badge color="danger">ERROR</Badge>
+                            </td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
-                            <td><Link to="/main/log-page">Detalhes</Link></td>
+                            <td>
+                              <Link to="/main/log-page">Detalhes</Link>
+                            </td>
                           </tr>
                           <tr>
-                            <td >
+                            <td>
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td><Badge color="danger">ERROR</Badge></td>
+                            <td>
+                              <Badge color="danger">ERROR</Badge>
+                            </td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
-                            <td><Link to="/main/log-page">Detalhes</Link></td>
+                            <td>
+                              <Link to="/main/log-page">Detalhes</Link>
+                            </td>
                           </tr>
                           <tr>
-                            <td >
+                            <td>
                               <Input type="checkbox" style={{ margin: 0 }} />
                             </td>
-                            <td><Badge color="danger">ERROR</Badge></td>
+                            <td>
+                              <Badge color="danger">ERROR</Badge>
+                            </td>
                             <td>Algum log de erro</td>
                             <td>1000</td>
-                            <td><Link to="/main/log-page">Detalhes</Link></td>
+                            <td>
+                              <Link to="/main/log-page">Detalhes</Link>
+                            </td>
                           </tr>
                         </tbody>
                       </Table>
                     </Col>
-
                   </Row>
-
                 </div>
               </Card>
             </Container>
           </section>
         </main>
-
       </>
-    );
+    )
   }
 }
 
-export default LogsList;
+export default LogsList

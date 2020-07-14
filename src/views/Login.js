@@ -51,6 +51,11 @@ class Login extends React.Component {
     this.refs.main.scrollTop = 0;
   }
 
+  login = () => {
+    alert("Implementação do código de login!")
+    this.props.history.push('/main')
+  }
+
   render() {
     let { loginEmail, loginSenha } = this.state
 
@@ -103,7 +108,7 @@ class Login extends React.Component {
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input
-                              placeholder="Password"
+                              placeholder="Senha"
                               type="password"
                               autoComplete="off"
                               name="loginSenha"
@@ -117,9 +122,9 @@ class Login extends React.Component {
                             className="my-4"
                             color="primary"
                             type="button"
-                            onClick={() => this.props.history.push('/main')}
+                            onClick={this.login}
                           >
-                            Sign in
+                            LOGIN
                           </Button>
                         </div>
                       </Form>
