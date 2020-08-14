@@ -80,7 +80,7 @@ class Register extends React.Component {
                   <Card className="bg-secondary shadow border-0">
                     <CardHeader className="bg-white pb-3">
                       <div className="text-center">
-                        <p className="h1">Nome do app</p>
+                        <p className="h1">Super Logs</p>
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
