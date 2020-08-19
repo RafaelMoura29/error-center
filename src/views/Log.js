@@ -9,10 +9,11 @@ class Profile extends React.Component {
     document.documentElement.scrollTop = 0
     document.scrollingElement.scrollTop = 0
     this.refs.main.scrollTop = 0
+    this.getLog()
   }
 
   getLog = () => {
-    console.log('Implementação do código para listar o log!')
+    //alert('Implementação do código para listar o log!')
   }
 
   render() {

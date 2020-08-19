@@ -26,7 +26,11 @@ import {
   Navbar,
   Container,
   Row,
-  Col
+  Col,
+  UncontrolledDropdown,
+DropdownToggle,
+DropdownMenu,
+DropdownItem
 } from "reactstrap";
 
 class DemoNavbar extends React.Component {
@@ -62,41 +66,16 @@ class DemoNavbar extends React.Component {
             id="navbar-main"
           >
             <Container>
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                target="_blank"
-              >
-                <span className="nav-link-inner--text ml-1">
-                  Bem vindo fulano! seu token é tananan
-                </span>
-              </Button>
-              <UncontrolledCollapse
-                toggler="#navbar_global"
-                navbar
-                className={this.state.collapseClasses}
-                onExiting={this.onExiting}
-                onExited={this.onExited}
-              >
-                <div className="navbar-collapse-header">
-                  <Row>
-                    <Col className="collapse-brand" xs="6">
-                      <Link to="/">
-                        <img
-                          alt="..."
-                          src={require("assets/img/brand/argon-react.png")}
-                        />
-                      </Link>
-                    </Col>
-                    <Col className="collapse-close" xs="6">
-                      <button className="navbar-toggler" id="navbar_global">
-                        <span />
-                        <span />
-                      </button>
-                    </Col>
-                  </Row>
-                </div>
-              </UncontrolledCollapse>
+            <UncontrolledDropdown>
+              <DropdownToggle caret color="secondary">
+                Bem vindo fulano! seu token é tananan
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                  Sair
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
             </Container>
           </Navbar>
         </header>

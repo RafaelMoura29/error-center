@@ -16,7 +16,8 @@
 
 */
 import React from "react";
-
+import axios from 'axios'
+import api from '../utils/api'
 // reactstrap components
 import {
   Button,
@@ -41,6 +42,8 @@ class Register extends React.Component {
       registerNome: "",
       registerEmail: "",
       registerSenha: "",
+      registerConfirmarSenha: "",
+      isLoading: false
     };
   }
 
@@ -53,13 +56,39 @@ class Register extends React.Component {
     this.refs.main.scrollTop = 0;
   }
 
-  register = () => {
-    alert("Implementação do código de cadastro!");
-    this.props.history.push("/login-page");
-  };
+  register = ( event ) => {
+    event.preventDefault()
+    /* this.setState({ isLoading: true });
+    const { registerNome, registerEmail, registerSenha, registerConfirmarSenha } = this.state
+
+    if(registerSenha !== registerConfirmarSenha){
+      return alert("Confira se as senhas são iguais!")
+    }
+   
+    axios.post('https://localhost:5001/api/usuario/register',{
+      "email": registerEmail,
+      "userName": registerNome,
+      "password": registerSenha,
+      "confirmPassword": registerConfirmarSenha
+    })  
+      .then((response) => {
+        alert("Cadastro realizado com sucesso!")
+        console.log(response)
+        //localStorage.setItem('TOKEN', data.token)
+        //this.props.history.push("/login-page");
+      })
+      .catch((error) => {
+        console.log(error)
+        alert("A senha deve conter caracteres especiais, números e letras! Caso sua senha esteja correta tente novamente em instantes")
+      })
+      .finally(() => {
+        this.setState({ isLoading: false });
+      }) */
+      this.props.history.push('/main')
+  }
 
   render() {
-    let { registerEmail, registerNome, registerSenha } = this.state;
+    let { registerEmail, registerNome, registerSenha, registerConfirmarSenha, isLoading } = this.state;
     return (
       <>
         <main ref="main">
@@ -84,7 +113,9 @@ class Register extends React.Component {
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
-                      <Form role="form">
+                      <Form 
+                      onSubmit={this.register}
+                      role="form">
                         <FormGroup>
                           <InputGroup className="input-group-alternative mb-3">
                             <InputGroupAddon addonType="prepend">
@@ -98,6 +129,8 @@ class Register extends React.Component {
                               value={registerNome}
                               onChange={this.handleChange}
                               type="text"
+                              minLength={1}
+                              required
                             />
                           </InputGroup>
                         </FormGroup>
@@ -114,6 +147,7 @@ class Register extends React.Component {
                               value={registerEmail}
                               onChange={this.handleChange}
                               type="email"
+                              required
                             />
                           </InputGroup>
                         </FormGroup>
@@ -125,12 +159,33 @@ class Register extends React.Component {
                               </InputGroupText>
                             </InputGroupAddon>
                             <Input
-                              placeholder="Password"
+                              placeholder="Senha"
                               autoComplete="off"
                               name="registerSenha"
                               value={registerSenha}
                               onChange={this.handleChange}
                               type="password"
+                              minLength={9}
+                              required
+                            />
+                          </InputGroup>
+                        </FormGroup>
+                        <FormGroup>
+                          <InputGroup className="input-group-alternative">
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>
+                                <i className="ni ni-lock-circle-open" />
+                              </InputGroupText>
+                            </InputGroupAddon>
+                            <Input
+                              placeholder="Confirmar Senha"
+                              autoComplete="off"
+                              name="registerConfirmarSenha"
+                              value={registerConfirmarSenha}
+                              onChange={this.handleChange}
+                              type="password"
+                              minLength={9}
+                              required
                             />
                           </InputGroup>
                         </FormGroup>
@@ -138,10 +193,11 @@ class Register extends React.Component {
                           <Button
                             className="mt-4"
                             color="primary"
-                            type="button"
-                            onClick={this.register}
+                            disabled={isLoading}
+                            type="submit"
                           >
-                            Criar conta
+                             { isLoading ? <><i className="fa fa-spinner fa-spin" /> Carregando </>  : <> Criar conta </> }
+                            
                           </Button>
                         </div>
                       </Form>

@@ -16,6 +16,8 @@
 
 */
 import React from "react";
+import axios from 'axios'
+import api from '../utils/api'
 
 // reactstrap components
 import {
@@ -52,7 +54,15 @@ class Login extends React.Component {
   }
 
   login = () => {
-    alert("Implementação do código de login!")
+    /* axios 
+      .post('https://localhost:5001/api/Usuario/register')
+      .then(response => {
+        //alert('success')
+      })
+      .catch(error => {
+        console.log(error)
+      }) */
+
     this.props.history.push('/main')
   }
 
@@ -97,6 +107,7 @@ class Login extends React.Component {
                               name="loginEmail"
                               value={loginEmail}
                               onChange={this.handleChange}
+                              
                             />
                           </InputGroup>
                         </FormGroup>

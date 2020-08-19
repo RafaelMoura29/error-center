@@ -17,7 +17,7 @@
 */
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 // reactstrap components
 import {
   Row,
@@ -50,7 +50,22 @@ class LogsList extends React.Component {
   }
 
   getLogs = () => {
-    console.log('Implementação do código para listagem dos logs!')
+    axios 
+      .get('https://localhost:5001/api/Log')
+      .then(response => {
+        console.log('success')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  arquivarLog = () => {
+    //alert("Arquivando log")
+  }
+
+  deletarLog = () => {
+    //alert("Deletando log")
   }
 
   render() {
@@ -129,36 +144,22 @@ class LogsList extends React.Component {
                     </Col>
                   </Row>
 
-                  <Row className="pl-4 pr-4 pb-4">
-                    <Col md="12">
-                      <Button color="primary" type="button" disabled>
-                        Arquivar
-                      </Button>
-
-                      <Button color="danger" type="button" disabled>
-                        Apagar
-                      </Button>
-                    </Col>
-                  </Row>
-
                   <Row className="pl-4 pr-4">
                     <Col md="12">
                       <Table striped bordered hover responsive="md">
                         <thead style={{ backgroundColor: '#ddd' }}>
                           <tr>
-                            <th style={{ width: '5%' }}></th>
                             <th style={{ width: '15%' }}>Level</th>
                             <th style={{ width: '50%' }}>Log</th>
-                            <th style={{ width: '20%' }}>Eventos</th>
+                            <th style={{ width: '15%' }}>Eventos</th>
                             <th style={{ width: '10%' }}></th>
+                            <th style={{ width: '5%' }}></th>
+                            <th style={{ width: '5%' }}></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td>
-                              <Input type="checkbox" style={{ margin: 0 }} />
-                            </td>
-                            <td>
                               <Badge color="danger">ERROR</Badge>
                             </td>
                             <td>Algum log de erro</td>
@@ -166,44 +167,11 @@ class LogsList extends React.Component {
                             <td>
                               <Link to="/main/log-page">Detalhes</Link>
                             </td>
-                          </tr>
-                          <tr>
                             <td>
-                              <Input type="checkbox" style={{ margin: 0 }} />
+                              <i className="ni ni-folder-17 icon-util" onClick={() => this.arquivarLog()}></i>
                             </td>
-                            <td>
-                              <Badge color="danger">ERROR</Badge>
-                            </td>
-                            <td>Algum log de erro</td>
-                            <td>1000</td>
-                            <td>
-                              <Link to="/main/log-page">Detalhes</Link>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <Input type="checkbox" style={{ margin: 0 }} />
-                            </td>
-                            <td>
-                              <Badge color="danger">ERROR</Badge>
-                            </td>
-                            <td>Algum log de erro</td>
-                            <td>1000</td>
-                            <td>
-                              <Link to="/main/log-page">Detalhes</Link>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <Input type="checkbox" style={{ margin: 0 }} />
-                            </td>
-                            <td>
-                              <Badge color="danger">ERROR</Badge>
-                            </td>
-                            <td>Algum log de erro</td>
-                            <td>1000</td>
-                            <td>
-                              <Link to="/main/log-page">Detalhes</Link>
+                            <td style={{paddingTop: '10px'}}>
+                              <i className="ni ni-fat-remove icon-util" onClick={() => this.deletarLog()} style={{fontSize: '2em'}}></i>
                             </td>
                           </tr>
                         </tbody>
