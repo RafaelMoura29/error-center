@@ -38,7 +38,6 @@ class DemoNavbar extends React.Component {
     let headroom = new Headroom(document.getElementById('navbar-main'))
     // initialise
     headroom.init()
-    console.log(this.props)
   }
   state = {
     collapseClasses: '',

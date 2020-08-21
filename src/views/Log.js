@@ -46,10 +46,8 @@ class Profile extends React.Component {
           data.tipo = 'Error'
         }
         this.setState({ log: data })
-        console.log(data)
       })
       .catch((error) => {
-        console.log(error)
       })
   }
 

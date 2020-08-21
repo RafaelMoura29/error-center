@@ -98,7 +98,6 @@ class Register extends React.Component {
       })
       .catch((error) => {
         this.setState({ isLoading: false })
-        console.log(error)
         alert(
           'A senha deve conter caracteres especiais, números e pelo menos uma letra em maiúsculo! Caso sua senha esteja correta tente utilizar um nome de usuário e email diferentes.'
         )

@@ -64,17 +64,14 @@ class LogsList extends React.Component {
         }
       )
       .then(({ data }) => {
-        console.log(data)
         this.setState({ logs: data })
       })
       .catch((error) => {
-        console.log(error)
       })
   }
 
   arquivarLog = (log, index) => {
     let logs = this.state.logs
-    console.log(log)
     axios
       .get(
         'https://superlogsapi20200815150510.azurewebsites.net/api/Log/' +
@@ -87,8 +84,7 @@ class LogsList extends React.Component {
         }
       )
       .then(({ data }) => {
-        data.status = 2
-        console.log(data)
+        data.idStatus = 2
         axios
           .put(
             'https://superlogsapi20200815150510.azurewebsites.net/api/Log',
@@ -240,31 +236,38 @@ class LogsList extends React.Component {
                             } else if (log.level === 'Warning') {
                               badge = 'warning'
                             }
-                            return (
-                              <tr key={log.idLog}>
-                                <td>
-                                  <Badge color={badge}>{log.level}</Badge>
-                                </td>
-                                <td>{log.descricao}</td>
-                                <td>{log.eventos}</td>
-                                <td>
-                                  <Link to={url}>Detalhes</Link>
-                                </td>
-                                <td>
-                                  <i
-                                    className="ni ni-folder-17 icon-util"
-                                    onClick={() => this.arquivarLog(log, index)}
-                                  ></i>
-                                </td>
-                                <td style={{ paddingTop: '10px' }}>
-                                  <i
-                                    className="ni ni-fat-remove icon-util"
-                                    onClick={() => this.deletarLog(log, index)}
-                                    style={{ fontSize: '2em' }}
-                                  ></i>
-                                </td>
-                              </tr>
-                            )
+                            
+                            if (log.idStatus === 1) {
+                              return (
+                                <tr key={log.idLog}>
+                                  <td>
+                                    <Badge color={badge}>{log.level}</Badge>
+                                  </td>
+                                  <td>{log.descricao}</td>
+                                  <td>{log.eventos}</td>
+                                  <td>
+                                    <Link to={url}>Detalhes</Link>
+                                  </td>
+                                  <td>
+                                    <i
+                                      className="ni ni-folder-17 icon-util"
+                                      onClick={() => this.arquivarLog(log, index)}
+                                    ></i>
+                                  </td>
+                                  <td style={{ paddingTop: '10px' }}>
+                                    <i
+                                      className="ni ni-fat-remove icon-util"
+                                      onClick={() => this.deletarLog(log, index)}
+                                      style={{ fontSize: '2em' }}
+                                    ></i>
+                                  </td>
+                                </tr>
+                              )
+                            }
+                            else {
+                              return 
+                            }
+                            
                           })}
                         </tbody>
                       </Table>
