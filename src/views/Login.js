@@ -194,7 +194,6 @@ class Login extends React.Component {
               className=" footer"
               style={{ backgroundColor: 'transparent' }}
             >
-              <hr />
             </footer>
           </section>
         </main>

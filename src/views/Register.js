@@ -72,6 +72,7 @@ class Register extends React.Component {
     } = this.state
 
     if (registerSenha !== registerConfirmarSenha) {
+      this.setState({ isLoading: false })
       return alert('Confira se as senhas são iguais!')
     }
 
@@ -248,7 +249,6 @@ class Register extends React.Component {
               className=" footer"
               style={{ backgroundColor: 'transparent' }}
             >
-              <hr />
             </footer>
           </section>
         </main>
