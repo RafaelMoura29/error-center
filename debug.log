@@ -1,0 +1,2 @@
+[0820/234348.643:ERROR:process_reader_win.cc(151)] SuspendThread: Acesso negado. (0x5)
+[0820/234348.658:ERROR:exception_snapshot_win.cc(98)] thread ID 10052 not found in process

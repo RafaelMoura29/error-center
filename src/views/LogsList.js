@@ -177,10 +177,16 @@ class LogsList extends React.Component {
                         <tbody>
                         {logs.map((log, index) =>{
                           let url = '/main/log-page/' + log.idLog
+                          let badge = "info"  
+                          if(log.level === "Error"){
+                            badge =   "danger"  
+                          }else if(log.level === "Warning"){
+                            badge = "warning" 
+                          }
                           return (
                           <tr key={log.idLog}>
                             <td>
-                              <Badge color="danger">{log.level}</Badge>
+                              <Badge color={badge}>{log.level}</Badge>
                             </td>
                             <td>{log.descricao}</td>
                             <td>{log.eventos}</td>
@@ -196,22 +202,6 @@ class LogsList extends React.Component {
                           </tr>
                           )
                         })}
-                          <tr>
-                            <td>
-                              <Badge color="danger">ERROR</Badge>
-                            </td>
-                            <td>Algum log de erro</td>
-                            <td>1000</td>
-                            <td>
-                              <Link to="/main/log-page/7">Detalhes</Link>
-                            </td>
-                            <td>
-                              <i className="ni ni-folder-17 icon-util" onClick={() => this.arquivarLog()}></i>
-                            </td>
-                            <td style={{paddingTop: '10px'}}>
-                              <i className="ni ni-fat-remove icon-util" onClick={() => this.deletarLog()} style={{fontSize: '2em'}}></i>
-                            </td>
-                          </tr>
                         </tbody>
                       </Table>
                     </Col>

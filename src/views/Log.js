@@ -29,7 +29,13 @@ class Profile extends React.Component {
       .get('https://superlogsapi20200815150510.azurewebsites.net/api/Log/' + idLog )
       .then(({data}) => {
         let dataLog = data.data
-
+        if(data.idTipoLog === 1){
+          data.tipo = "Debug"
+        }else if(data.idTipoLog === 2){
+          data.tipo = "Warning"
+        }else {
+          data.tipo = "Error"
+        }
         this.setState({log: data})
         console.log(data)
       })
@@ -71,7 +77,7 @@ class Profile extends React.Component {
                           <img
                             alt="..."
                             className="rounded-circle"
-                            src={require('assets/img/theme/team-4-800x800.jpg')}
+                            src={require(`assets/img/theme/${log.tipo || "Loading"}.jpg`)}
                           />
                         </a>
                       </div>
