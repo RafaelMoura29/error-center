@@ -16,17 +16,12 @@
 
 */
 import React from 'react'
-import { Link } from 'react-router-dom'
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from 'headroom.js'
 // reactstrap components
 import {
-  Button,
-  UncontrolledCollapse,
   Navbar,
   Container,
-  Row,
-  Col,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -34,6 +29,12 @@ import {
 } from 'reactstrap'
 
 class DemoNavbar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      
+    }
+  }
 
   componentDidMount() {
     let headroom = new Headroom(document.getElementById('navbar-main'))
@@ -61,7 +62,7 @@ class DemoNavbar extends React.Component {
     event.preventDefault()
     localStorage.removeItem('TOKEN')
     localStorage.removeItem('USERNAME')
-    window.location.href = '/'
+    this.props.history.push('/')
   }
 
   render() {

@@ -40,8 +40,6 @@ class LogsList extends React.Component {
       inputBusca: '',
       logs: []
     }
-    this.token = localStorage.getItem('TOKEN');
-    this.userName = localStorage.getItem('USERNAME');
   }
 
   handleChange = (event) => {
@@ -50,9 +48,6 @@ class LogsList extends React.Component {
 
   componentDidMount = () => {
     this.getLogs()
-    if(this.token === null){
-      window.location.href = '/login-page'
-    }
   }
 
   getLogs = () => {

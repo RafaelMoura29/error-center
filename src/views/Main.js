@@ -25,10 +25,25 @@ import Log from "./Log.js";
 import "./style.css";
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      log: {}
+    }
+    this.token = localStorage.getItem('TOKEN');
+    this.userName = localStorage.getItem('USERNAME');
+  }
+
+  componentDidMount(){
+    if(this.token === null){
+      this.props.history.push('/')
+    }
+  }
+
   render() {
     return (
       <>
-        <DemoNavbar />
+        <DemoNavbar history={this.props.history}/>
         {/* <Row id="row-navbar">
           <Col md="12" >
             <p className="mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>

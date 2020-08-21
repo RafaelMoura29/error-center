@@ -11,14 +11,9 @@ class Profile extends React.Component {
     this.state = {
       log: {}
     }
-    this.token = localStorage.getItem('TOKEN');
-    this.userName = localStorage.getItem('USERNAME');
   }
 
   componentDidMount() {
-    if(this.token === null){
-      window.location.href = '/login-page'
-    }
     document.documentElement.scrollTop = 0
     document.scrollingElement.scrollTop = 0
     this.refs.main.scrollTop = 0
