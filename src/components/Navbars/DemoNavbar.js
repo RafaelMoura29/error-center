@@ -40,6 +40,7 @@ class DemoNavbar extends React.Component {
     let headroom = new Headroom(document.getElementById('navbar-main'))
     // initialise
     headroom.init()
+    console.log(this.props)
   }
   state = {
     collapseClasses: '',
@@ -77,11 +78,19 @@ class DemoNavbar extends React.Component {
             <Container>
               <UncontrolledDropdown>
                 <DropdownToggle caret color="secondary">
-                  Bem vindo fulano! seu token é tananan
+                  Bem vindo {this.props.userName}! 
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem
-                    href="#pablo"
+                    href="#"
+                    onClick={() => {
+                      prompt("Seu token é",this.props.token)
+                    }}
+                  >
+                    token
+                  </DropdownItem>
+                  <DropdownItem
+                    href="#"
                     onClick={this.logout}
                   >
                     Sair

@@ -43,7 +43,7 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <DemoNavbar history={this.props.history}/>
+        <DemoNavbar history={this.props.history} token={this.token} userName={this.userName}/>
         {/* <Row id="row-navbar">
           <Col md="12" >
             <p className="mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
