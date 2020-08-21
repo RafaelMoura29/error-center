@@ -37,8 +37,11 @@ class LogsList extends React.Component {
       selectAmbiente: 'Produção',
       selectTipoOrdenagem: 'Ordenar por',
       selectTipoBusca: 'selectTipoBusca',
-      inputBusca: ''
+      inputBusca: '',
+      logs: []
     }
+    this.token = localStorage.getItem('TOKEN');
+    this.userName = localStorage.getItem('USERNAME');
   }
 
   handleChange = (event) => {
@@ -47,16 +50,20 @@ class LogsList extends React.Component {
 
   componentDidMount = () => {
     this.getLogs()
+    if(this.token === null){
+      window.location.href = '/login-page'
+    }
   }
 
   getLogs = () => {
     axios 
-      .get('https://localhost:5001/api/Log')
-      .then(response => {
-        console.log('success')
+      .get('https://superlogsapi20200815150510.azurewebsites.net/api/Log')
+      .then(({data}) => {
+        console.log(data)
+        this.setState({ logs: data });
       })
       .catch(error => {
-        console.log(error)
+        //console.log(error)
       })
   }
 
@@ -89,7 +96,7 @@ class LogsList extends React.Component {
               <span />
             </div>
           </section>
-          <section className="section" style={{ backgroundColor: '#eee' }}>
+          <section className="section" style={{ background: 'linear-gradient(35deg, #fb6340 0, #fbb140 100%)' }}>
             <Container>
               <Card className="card-profile shadow main-card">
                 <div className="px-4">
@@ -165,7 +172,7 @@ class LogsList extends React.Component {
                             <td>Algum log de erro</td>
                             <td>1000</td>
                             <td>
-                              <Link to="/main/log-page">Detalhes</Link>
+                              <Link to="/main/log-page/7">Detalhes</Link>
                             </td>
                             <td>
                               <i className="ni ni-folder-17 icon-util" onClick={() => this.arquivarLog()}></i>

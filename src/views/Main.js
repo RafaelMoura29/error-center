@@ -38,7 +38,7 @@ class Main extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route path="/main/logsList-page" exact component={LogsList} />
-            <Route path="/main/log-page" exact component={Log} />
+            <Route path="/main/log-page/:idLog" exact component={Log} />
             <Redirect to="/main/logsList-page" />
           </Switch>
         </BrowserRouter>

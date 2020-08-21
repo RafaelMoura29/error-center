@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react'
 import axios from 'axios'
 import api from '../utils/api'
 
@@ -33,41 +33,60 @@ import {
   InputGroup,
   Container,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       loginEmail: '',
-      loginSenha: ''
+      loginSenha: '',
+      isLoading: false
     }
   }
 
-  handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
+  handleChange = (event) =>
+    this.setState({ [event.target.name]: event.target.value })
 
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    document.documentElement.scrollTop = 0
+    document.scrollingElement.scrollTop = 0
+    this.refs.main.scrollTop = 0
   }
 
-  login = () => {
-    /* axios 
-      .post('https://localhost:5001/api/Usuario/register')
-      .then(response => {
-        //alert('success')
-      })
-      .catch(error => {
-        console.log(error)
-      }) */
+  login = (event) => {
+    event.preventDefault()
+    this.setState({ isLoading: true })
+    const {
+      loginEmail,
+      loginSenha
+    } = this.state
 
-    this.props.history.push('/main')
+    axios
+      .post(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Usuario/login',
+        {
+          email: loginEmail,
+          userName: '',
+          password: loginSenha,
+          confirmPassword: loginSenha
+        }
+      )
+      .then(({data:{token, userName}}) => {
+        this.setState({ isLoading: false })
+        localStorage.setItem('TOKEN', token)
+        localStorage.setItem('USERNAME', userName)
+        this.props.history.push('/main')
+      })
+      .catch((error) => {
+        this.setState({ isLoading: false })
+        alert('Verifique se todos os dados estão corretos!')
+      })
   }
 
   render() {
-    let { loginEmail, loginSenha } = this.state
+    let { loginEmail, loginSenha, isLoading } = this.state
 
     return (
       <>
@@ -93,7 +112,7 @@ class Login extends React.Component {
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
-                      <Form role="form">
+                      <Form role="form" onSubmit={this.login}>
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
@@ -101,13 +120,13 @@ class Login extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input 
-                              placeholder="Email" 
-                              type="email" 
+                            <Input
+                              placeholder="Email"
+                              type="email"
                               name="loginEmail"
                               value={loginEmail}
                               onChange={this.handleChange}
-                              
+                              required
                             />
                           </InputGroup>
                         </FormGroup>
@@ -125,6 +144,8 @@ class Login extends React.Component {
                               name="loginSenha"
                               value={loginSenha}
                               onChange={this.handleChange}
+                              minLength={9}
+                              required
                             />
                           </InputGroup>
                         </FormGroup>
@@ -132,10 +153,17 @@ class Login extends React.Component {
                           <Button
                             className="my-4"
                             color="primary"
-                            type="button"
-                            onClick={this.login}
+                            type="submit"
+                            disabled={isLoading}
                           >
-                            LOGIN
+                            {isLoading ? (
+                              <>
+                                <i className="fa fa-spinner fa-spin" />{' '}
+                                Carregando{' '}
+                              </>
+                            ) : (
+                              <> Login </>
+                            )}
                           </Button>
                         </div>
                       </Form>
@@ -146,7 +174,9 @@ class Login extends React.Component {
                       <a
                         className="text-light"
                         href="#pablo"
-                        onClick={e => this.props.history.push('/register-page')}
+                        onClick={(e) =>
+                          this.props.history.push('/register-page')
+                        }
                       >
                         <small>Criar Conta</small>
                       </a>
@@ -155,15 +185,17 @@ class Login extends React.Component {
                 </Col>
               </Row>
             </Container>
-            <footer className=" footer" style={{ backgroundColor: 'transparent' }}>
+            <footer
+              className=" footer"
+              style={{ backgroundColor: 'transparent' }}
+            >
               <hr />
             </footer>
           </section>
         </main>
-
       </>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login

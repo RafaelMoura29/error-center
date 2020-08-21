@@ -15,10 +15,10 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 // JavaScript plugin that hides or shows a component based on your scroll
-import Headroom from "headroom.js";
+import Headroom from 'headroom.js'
 // reactstrap components
 import {
   Button,
@@ -28,33 +28,41 @@ import {
   Row,
   Col,
   UncontrolledDropdown,
-DropdownToggle,
-DropdownMenu,
-DropdownItem
-} from "reactstrap";
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap'
 
 class DemoNavbar extends React.Component {
+
   componentDidMount() {
-    let headroom = new Headroom(document.getElementById("navbar-main"));
+    let headroom = new Headroom(document.getElementById('navbar-main'))
     // initialise
-    headroom.init();
+    headroom.init()
   }
   state = {
-    collapseClasses: "",
+    collapseClasses: '',
     collapseOpen: false
-  };
+  }
 
   onExiting = () => {
     this.setState({
-      collapseClasses: "collapsing-out"
-    });
-  };
+      collapseClasses: 'collapsing-out'
+    })
+  }
 
   onExited = () => {
     this.setState({
-      collapseClasses: ""
-    });
-  };
+      collapseClasses: ''
+    })
+  }
+
+  logout = (event) => {
+    event.preventDefault()
+    localStorage.removeItem('TOKEN')
+    localStorage.removeItem('USERNAME')
+    window.location.href = '/'
+  }
 
   render() {
     return (
@@ -66,22 +74,25 @@ class DemoNavbar extends React.Component {
             id="navbar-main"
           >
             <Container>
-            <UncontrolledDropdown>
-              <DropdownToggle caret color="secondary">
-                Bem vindo fulano! seu token é tananan
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
-                  Sair
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+              <UncontrolledDropdown>
+                <DropdownToggle caret color="secondary">
+                  Bem vindo fulano! seu token é tananan
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem
+                    href="#pablo"
+                    onClick={this.logout}
+                  >
+                    Sair
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </Container>
           </Navbar>
         </header>
       </>
-    );
+    )
   }
 }
 
-export default DemoNavbar;
+export default DemoNavbar

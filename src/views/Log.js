@@ -3,9 +3,22 @@ import React from 'react'
 // reactstrap components
 import { Card, Container, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Profile extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      log: {}
+    }
+    this.token = localStorage.getItem('TOKEN');
+    this.userName = localStorage.getItem('USERNAME');
+  }
+
   componentDidMount() {
+    if(this.token === null){
+      window.location.href = '/login-page'
+    }
     document.documentElement.scrollTop = 0
     document.scrollingElement.scrollTop = 0
     this.refs.main.scrollTop = 0
@@ -13,10 +26,25 @@ class Profile extends React.Component {
   }
 
   getLog = () => {
-    //alert('Implementação do código para listar o log!')
+    const {
+      match: { params }
+    } = this.props
+    const idLog = params.idLog
+    axios 
+      .get('https://superlogsapi20200815150510.azurewebsites.net/api/Log/' + idLog )
+      .then(({data}) => {
+        let dataLog = data.data
+
+        this.setState({log: data})
+        console.log(data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
+    let { log } = this.state
     return (
       <>
         <main className="profile-page" ref="main">
@@ -71,14 +99,14 @@ class Profile extends React.Component {
                     </Col>
                   </Row>
                   <div className="text-center mt-6">
-                    <h3>Error no 127.0.0.1 em 24;05/2019 10:15</h3>
+                    <h3>Error no {log.host} em {log.data}</h3>
                     <div className="h6 font-weight-300">
                       <i className="ni location_pin mr-2" />
-                      Coletado por: Token do usuário José da Silva
+                      Coletado por: {log.tokenUsuario}
                     </div>
                     <div className="h6 font-weight-300">
                       <i className="ni business_briefcase-24 mr-2" />
-                      Eventos - 1000
+                      Eventos - {log.eventos}
                     </div>
                   </div>
                   <div className="mt-5 py-5 border-top text-justify">
@@ -88,23 +116,13 @@ class Profile extends React.Component {
                           Título
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt
+                          {log.titulo}
                         </p>
                         <h3 className=" text-primary font-weight-light mb-2">
                           Detalhes
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt
-                        </p>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt
+                          {log.descricao}
                         </p>
                       </Col>
                     </Row>

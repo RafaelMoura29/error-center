@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react'
 import axios from 'axios'
 import api from '../utils/api'
 // reactstrap components
@@ -32,63 +32,81 @@ import {
   InputGroup,
   Container,
   Row,
-  Col,
-} from "reactstrap";
+  Col
+} from 'reactstrap'
 
 class Register extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      registerNome: "",
-      registerEmail: "",
-      registerSenha: "",
-      registerConfirmarSenha: "",
+      registerNome: '',
+      registerEmail: '',
+      registerSenha: '',
+      registerConfirmarSenha: '',
       isLoading: false
-    };
+    }
   }
 
   handleChange = (event) =>
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value })
 
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-    this.refs.main.scrollTop = 0;
+    document.documentElement.scrollTop = 0
+    document.scrollingElement.scrollTop = 0
+    this.refs.main.scrollTop = 0
   }
 
-  register = ( event ) => {
+  register = (event) => {
     event.preventDefault()
-    /* this.setState({ isLoading: true });
-    const { registerNome, registerEmail, registerSenha, registerConfirmarSenha } = this.state
+    this.setState({ isLoading: true })
+    const {
+      registerNome,
+      registerEmail,
+      registerSenha,
+      registerConfirmarSenha
+    } = this.state
 
-    if(registerSenha !== registerConfirmarSenha){
-      return alert("Confira se as senhas são iguais!")
+    if (registerSenha !== registerConfirmarSenha) {
+      return alert('Confira se as senhas são iguais!')
     }
-   
-    axios.post('https://localhost:5001/api/usuario/register',{
-      "email": registerEmail,
-      "userName": registerNome,
-      "password": registerSenha,
-      "confirmPassword": registerConfirmarSenha
-    })  
-      .then((response) => {
-        alert("Cadastro realizado com sucesso!")
-        console.log(response)
-        //localStorage.setItem('TOKEN', data.token)
-        //this.props.history.push("/login-page");
+
+    axios
+      .post(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Usuario/register',
+        {
+          email: registerEmail,
+          userName: registerNome,
+          password: registerSenha,
+          confirmPassword: registerConfirmarSenha
+        },
+        {
+          headers: { 'Access-Control-Allow-Origin': '*' }
+        }
+      )
+      .then(({ data: { token, userName } }) => {
+        this.setState({ isLoading: false })
+        alert('Cadastro realizado com sucesso!')
+        localStorage.setItem('TOKEN', token)
+        localStorage.setItem('USERNAME', userName)
+        this.props.history.push('/main')
       })
       .catch((error) => {
+        this.setState({ isLoading: false })
         console.log(error)
-        alert("A senha deve conter caracteres especiais, números e letras! Caso sua senha esteja correta tente novamente em instantes")
+        alert(
+          'A senha deve conter caracteres especiais, números e letras! Caso sua senha esteja correta tente novamente em instantes'
+        )
       })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      }) */
-      this.props.history.push('/main')
   }
 
   render() {
-    let { registerEmail, registerNome, registerSenha, registerConfirmarSenha, isLoading } = this.state;
+    let {
+      registerEmail,
+      registerNome,
+      registerSenha,
+      registerConfirmarSenha,
+      isLoading
+    } = this.state
     return (
       <>
         <main ref="main">
@@ -113,9 +131,7 @@ class Register extends React.Component {
                       </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">
-                      <Form 
-                      onSubmit={this.register}
-                      role="form">
+                      <Form onSubmit={this.register} role="form">
                         <FormGroup>
                           <InputGroup className="input-group-alternative mb-3">
                             <InputGroupAddon addonType="prepend">
@@ -196,8 +212,14 @@ class Register extends React.Component {
                             disabled={isLoading}
                             type="submit"
                           >
-                             { isLoading ? <><i className="fa fa-spinner fa-spin" /> Carregando </>  : <> Criar conta </> }
-                            
+                            {isLoading ? (
+                              <>
+                                <i className="fa fa-spinner fa-spin" />{' '}
+                                Carregando{' '}
+                              </>
+                            ) : (
+                              <> Criar conta </>
+                            )}
                           </Button>
                         </div>
                       </Form>
@@ -207,8 +229,8 @@ class Register extends React.Component {
                     <Col xs="6">
                       <a
                         className="text-light"
-                        href="#pablo"
-                        onClick={(e) => this.props.history.push("/login-page")}
+                        href="."
+                        onClick={(e) => this.props.history.push('/login-page')}
                       >
                         <small>Fazer Login</small>
                       </a>
@@ -219,15 +241,15 @@ class Register extends React.Component {
             </Container>
             <footer
               className=" footer"
-              style={{ backgroundColor: "transparent" }}
+              style={{ backgroundColor: 'transparent' }}
             >
               <hr />
             </footer>
           </section>
         </main>
       </>
-    );
+    )
   }
 }
 
-export default Register;
+export default Register
