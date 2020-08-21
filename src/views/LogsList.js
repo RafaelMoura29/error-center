@@ -119,7 +119,14 @@ class LogsList extends React.Component {
   }
 
   ordenarLogs = () => {
-
+    let {logs, selectTipoOrdenagem} = this.state
+    if(selectTipoOrdenagem === "level"){
+      logs.sort((a, b) => (a.idTipoLog > b.idTipoLog) ? -1 : 1)
+    } else if(selectTipoOrdenagem === "frequencia"){
+      logs.sort((a, b) => (a.eventos > b.eventos) ? -1 : 1)
+    }
+    console.log(selectTipoOrdenagem)
+    this.setState({ logs })
   }
 
   deletarLog = (log, index, event) => {
@@ -204,8 +211,8 @@ class LogsList extends React.Component {
                         value={this.state.selectTipoOrdenagem}
                       >
                         <option value="Ordenar por">Ordenar por</option>
-                        <option value="Level">Level</option>
-                        <option value="Frequencia">Frequência</option>
+                        <option value="level">Level</option>
+                        <option value="frequencia">Frequência</option>
                       </Input>
                     </Col>
 
@@ -249,11 +256,11 @@ class LogsList extends React.Component {
                         <tbody>
                           {logs.map((log, index) => {
                             let url = '/main/log-page/' + log.idLog
-                            let badge = 'info'
-                            let badgeDescription = "Debug"
+                            let badge = 'danger'
+                            let badgeDescription = "Error"
                             if (log.idTipoLog === 1) {
-                              badge = 'danger'
-                              badgeDescription = "Error"
+                              badge = 'info'
+                              badgeDescription = "Debug"
                             } else if (log.idTipoLog === 2) {
                               badge = 'warning'
                               badgeDescription = "Warning"
