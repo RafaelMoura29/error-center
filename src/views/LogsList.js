@@ -51,33 +51,43 @@ class LogsList extends React.Component {
   }
 
   getLogs = () => {
-    const {
-      selectAmbiente
-    } = this.state
+    const { selectAmbiente } = this.state
     console.log(selectAmbiente)
-    axios 
-      .get(`https://superlogsapi20200815150510.azurewebsites.net/api/Log?IdAmbiente=${selectAmbiente}&OrdenarPor=0&BuscarPor=0&PesquisaCampo=%20`)
-      .then(({data}) => {
+    axios
+      .get(
+        `https://superlogsapi20200815150510.azurewebsites.net/api/Log?IdAmbiente=${selectAmbiente}&OrdenarPor=0&BuscarPor=0&PesquisaCampo=%20`
+      )
+      .then(({ data }) => {
         console.log(data)
-        this.setState({ logs: data });
+        this.setState({ logs: data })
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }
 
-  arquivarLog = () => {
-    //alert("Arquivando log")
+  arquivarLog = (log, index) => {
+    let logs = this.state.logs
+    /* axios
+      .put(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Log',{
+
+
+        }
+      ) */
   }
 
   deletarLog = (log, index) => {
-    console.log(index)
     let logs = this.state.logs
-    axios.delete('https://superlogsapi20200815150510.azurewebsites.net/api/Log/' + log.idLog)
-    .then((response) => {
-      alert('Log excluído com sucesso!')
-      logs.splice(index, 1);
-      this.setState({logs})
+    axios
+      .delete(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Log/' +
+          log.idLog
+      )
+      .then((response) => {
+        logs.splice(index, 1)
+        this.setState({ logs })
+        alert('Log excluído com sucesso!')
       })
       .catch((error) => {
         alert('Ocorreu um erro ao excluir o log, tente novamente em instantes!')
@@ -175,33 +185,40 @@ class LogsList extends React.Component {
                           </tr>
                         </thead>
                         <tbody>
-                        {logs.map((log, index) =>{
-                          let url = '/main/log-page/' + log.idLog
-                          let badge = "info"  
-                          if(log.level === "Error"){
-                            badge =   "danger"  
-                          }else if(log.level === "Warning"){
-                            badge = "warning" 
-                          }
-                          return (
-                          <tr key={log.idLog}>
-                            <td>
-                              <Badge color={badge}>{log.level}</Badge>
-                            </td>
-                            <td>{log.descricao}</td>
-                            <td>{log.eventos}</td>
-                            <td>
-                              <Link to={url} >Detalhes</Link>
-                            </td>
-                            <td>
-                              <i className="ni ni-folder-17 icon-util" onClick={() => this.arquivarLog(log)}></i>
-                            </td>
-                            <td style={{paddingTop: '10px'}}>
-                              <i className="ni ni-fat-remove icon-util" onClick={() => this.deletarLog(log, index)} style={{fontSize: '2em'}}></i>
-                            </td>
-                          </tr>
-                          )
-                        })}
+                          {logs.map((log, index) => {
+                            let url = '/main/log-page/' + log.idLog
+                            let badge = 'info'
+                            if (log.level === 'Error') {
+                              badge = 'danger'
+                            } else if (log.level === 'Warning') {
+                              badge = 'warning'
+                            }
+                            return (
+                              <tr key={log.idLog}>
+                                <td>
+                                  <Badge color={badge}>{log.level}</Badge>
+                                </td>
+                                <td>{log.descricao}</td>
+                                <td>{log.eventos}</td>
+                                <td>
+                                  <Link to={url}>Detalhes</Link>
+                                </td>
+                                <td>
+                                  <i
+                                    className="ni ni-folder-17 icon-util"
+                                    onClick={() => this.arquivarLog(log, index)}
+                                  ></i>
+                                </td>
+                                <td style={{ paddingTop: '10px' }}>
+                                  <i
+                                    className="ni ni-fat-remove icon-util"
+                                    onClick={() => this.deletarLog(log, index)}
+                                    style={{ fontSize: '2em' }}
+                                  ></i>
+                                </td>
+                              </tr>
+                            )
+                          })}
                         </tbody>
                       </Table>
                     </Col>
