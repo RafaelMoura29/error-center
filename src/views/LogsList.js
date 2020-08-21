@@ -69,7 +69,6 @@ class LogsList extends React.Component {
         }
       )
       .then(({ data }) => {
-        console.log(data)
         this.setState({ logs: data })
       })
       .catch((error) => {
@@ -270,7 +269,6 @@ class LogsList extends React.Component {
                               badge = 'warning'
                               badgeDescription = "Warning"
                             } 
-                            console.log(this.state.selectTipoBusca)
                             if (log.idStatus === 1) {
                               if(this.state.selectTipoBusca === "") {
                                 return (
@@ -300,7 +298,6 @@ class LogsList extends React.Component {
                                 )
                               } else {
                                 if(this.state.selectTipoBusca === "level"){
-                                  console.log(badgeDescription.toLowerCase().indexOf(this.state.inputBusca.toLowerCase()) )
                                   if(badgeDescription.toLowerCase().indexOf(this.state.inputBusca.toLowerCase()) !== -1){
                                     return (
                                       <tr key={log.idLog}>
