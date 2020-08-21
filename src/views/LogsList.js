@@ -35,7 +35,7 @@ class LogsList extends React.Component {
     this.state = {
       selectAmbiente: 1,
       selectTipoOrdenagem: 'Ordenar por',
-      selectTipoBusca: 'selectTipoBusca',
+      selectTipoBusca: '',
       inputBusca: '',
       logs: []
     }
@@ -48,6 +48,12 @@ class LogsList extends React.Component {
 
   componentDidMount = () => {
     this.getLogs()
+  }
+
+  handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.getLogs()
+    }
   }
 
   getLogs = () => {
@@ -125,7 +131,6 @@ class LogsList extends React.Component {
     } else if(selectTipoOrdenagem === "frequencia"){
       logs.sort((a, b) => (a.eventos > b.eventos) ? -1 : 1)
     }
-    console.log(selectTipoOrdenagem)
     this.setState({ logs })
   }
 
@@ -223,10 +228,9 @@ class LogsList extends React.Component {
                         onChange={this.handleChange}
                         value={this.state.selectTipoBusca}
                       >
-                        <option value="Buscar por">Buscar por</option>
-                        <option value="Level">Level</option>
-                        <option value="Descrição">Descrição</option>
-                        <option value="Origem">Origem</option>
+                        <option value="">Buscar por</option>
+                        <option value="level">Level</option>
+                        <option value="descricao">Descrição</option>
                       </Input>
                     </Col>
 
@@ -236,6 +240,7 @@ class LogsList extends React.Component {
                         name="inputBusca"
                         onChange={this.handleChange}
                         value={this.state.inputBusca}
+                        onKeyDown={(event) => this.handleKeyDown(event)}
                       />
                     </Col>
                   </Row>
@@ -265,32 +270,94 @@ class LogsList extends React.Component {
                               badge = 'warning'
                               badgeDescription = "Warning"
                             } 
+                            console.log(this.state.selectTipoBusca)
                             if (log.idStatus === 1) {
-                              return (
-                                <tr key={log.idLog}>
-                                  <td>
-                                    <Badge color={badge}>{badgeDescription}</Badge>
-                                  </td>
-                                  <td>{log.descricao}</td>
-                                  <td>{log.eventos}</td>
-                                  <td>
-                                    <Link to={url}>Detalhes</Link>
-                                  </td>
-                                  <td>
-                                    <i
-                                      className="ni ni-folder-17 icon-util"
-                                      onClick={(event) => this.arquivarLog(log, index, event)}
-                                    ></i> 
-                                  </td>
-                                  <td style={{ paddingTop: '10px' }}>
-                                    <i
-                                      className="ni ni-fat-remove icon-util"
-                                      onClick={(event) => this.deletarLog(log, index, event)}
-                                      style={{ fontSize: '2em' }}
-                                    ></i>
-                                  </td>
-                                </tr>
-                              )
+                              if(this.state.selectTipoBusca === "") {
+                                return (
+                                  <tr key={log.idLog}>
+                                    <td>
+                                      <Badge color={badge}>{badgeDescription}</Badge>
+                                    </td>
+                                    <td>{log.descricao}</td>
+                                    <td>{log.eventos}</td>
+                                    <td>
+                                      <Link to={url}>Detalhes</Link>
+                                    </td>
+                                    <td>
+                                      <i
+                                        className="ni ni-folder-17 icon-util"
+                                        onClick={(event) => this.arquivarLog(log, index, event)}
+                                      ></i> 
+                                    </td>
+                                    <td style={{ paddingTop: '10px' }}>
+                                      <i
+                                        className="ni ni-fat-remove icon-util"
+                                        onClick={(event) => this.deletarLog(log, index, event)}
+                                        style={{ fontSize: '2em' }}
+                                      ></i>
+                                    </td>
+                                  </tr>
+                                )
+                              } else {
+                                if(this.state.selectTipoBusca === "level"){
+                                  console.log(badgeDescription.toLowerCase().indexOf(this.state.inputBusca.toLowerCase()) )
+                                  if(badgeDescription.toLowerCase().indexOf(this.state.inputBusca.toLowerCase()) !== -1){
+                                    return (
+                                      <tr key={log.idLog}>
+                                        <td>
+                                          <Badge color={badge}>{badgeDescription}</Badge>
+                                        </td>
+                                        <td>{log.descricao}</td>
+                                        <td>{log.eventos}</td>
+                                        <td>
+                                          <Link to={url}>Detalhes</Link>
+                                        </td>
+                                        <td>
+                                          <i
+                                            className="ni ni-folder-17 icon-util"
+                                            onClick={(event) => this.arquivarLog(log, index, event)}
+                                          ></i> 
+                                        </td>
+                                        <td style={{ paddingTop: '10px' }}>
+                                          <i
+                                            className="ni ni-fat-remove icon-util"
+                                            onClick={(event) => this.deletarLog(log, index, event)}
+                                            style={{ fontSize: '2em' }}
+                                          ></i>
+                                        </td>
+                                      </tr>
+                                    )
+                                  }
+                                } else if(this.state.selectTipoBusca === "descricao"){
+                                  if(log.descricao.toLowerCase().indexOf(this.state.inputBusca.toLowerCase()) != -1){
+                                    return (
+                                      <tr key={log.idLog}>
+                                        <td>
+                                          <Badge color={badge}>{badgeDescription}</Badge>
+                                        </td>
+                                        <td>{log.descricao}</td>
+                                        <td>{log.eventos}</td>
+                                        <td>
+                                          <Link to={url}>Detalhes</Link>
+                                        </td>
+                                        <td>
+                                          <i
+                                            className="ni ni-folder-17 icon-util"
+                                            onClick={(event) => this.arquivarLog(log, index, event)}
+                                          ></i> 
+                                        </td>
+                                        <td style={{ paddingTop: '10px' }}>
+                                          <i
+                                            className="ni ni-fat-remove icon-util"
+                                            onClick={(event) => this.deletarLog(log, index, event)}
+                                            style={{ fontSize: '2em' }}
+                                          ></i>
+                                        </td>
+                                      </tr>
+                                    )
+                                  }
+                                }
+                              }
                             }
                             else {
                               return 
