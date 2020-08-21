@@ -45,16 +45,16 @@ class Register extends React.Component {
       registerConfirmarSenha: '',
       isLoading: false
     }
-    this.token = localStorage.getItem('TOKEN');
-    this.userName = localStorage.getItem('USERNAME');
+    this.token = localStorage.getItem('TOKEN')
+    this.userName = localStorage.getItem('USERNAME')
   }
 
   handleChange = (event) =>
     this.setState({ [event.target.name]: event.target.value })
 
   componentDidMount() {
-    if(this.token !== null){
-     this.props.history.push('/main/logsList-page')
+    if (this.token !== null) {
+      this.props.history.push('/main/logsList-page')
     }
     document.documentElement.scrollTop = 0
     document.scrollingElement.scrollTop = 0
@@ -248,8 +248,7 @@ class Register extends React.Component {
             <footer
               className=" footer"
               style={{ backgroundColor: 'transparent' }}
-            >
-            </footer>
+            ></footer>
           </section>
         </main>
       </>

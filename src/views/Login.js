@@ -44,15 +44,15 @@ class Login extends React.Component {
       loginSenha: '',
       isLoading: false
     }
-    this.token = localStorage.getItem('TOKEN');
-    this.userName = localStorage.getItem('USERNAME');
+    this.token = localStorage.getItem('TOKEN')
+    this.userName = localStorage.getItem('USERNAME')
   }
 
   handleChange = (event) =>
     this.setState({ [event.target.name]: event.target.value })
 
   componentDidMount() {
-    if(this.token !== null){
+    if (this.token !== null) {
       this.props.history.push('/main/logsList-page')
     }
     document.documentElement.scrollTop = 0
@@ -63,10 +63,7 @@ class Login extends React.Component {
   login = (event) => {
     event.preventDefault()
     this.setState({ isLoading: true })
-    const {
-      loginEmail,
-      loginSenha
-    } = this.state
+    const { loginEmail, loginSenha } = this.state
 
     axios
       .post(
@@ -78,7 +75,7 @@ class Login extends React.Component {
           confirmPassword: loginSenha
         }
       )
-      .then(({data:{token, userName}}) => {
+      .then(({ data: { token, userName } }) => {
         this.setState({ isLoading: false })
         localStorage.setItem('TOKEN', token)
         localStorage.setItem('USERNAME', userName)
@@ -193,8 +190,7 @@ class Login extends React.Component {
             <footer
               className=" footer"
               style={{ backgroundColor: 'transparent' }}
-            >
-            </footer>
+            ></footer>
           </section>
         </main>
       </>

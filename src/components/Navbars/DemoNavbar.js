@@ -31,9 +31,7 @@ import {
 class DemoNavbar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      
-    }
+    this.state = {}
   }
 
   componentDidMount() {
@@ -78,21 +76,18 @@ class DemoNavbar extends React.Component {
             <Container>
               <UncontrolledDropdown>
                 <DropdownToggle caret color="secondary">
-                  Bem vindo {this.props.userName}! 
+                  Bem vindo(a) {this.props.userName}!
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem
                     href="#"
                     onClick={() => {
-                      prompt("Seu token é",this.props.token)
+                      prompt('Seu token é', this.props.token)
                     }}
                   >
                     token
                   </DropdownItem>
-                  <DropdownItem
-                    href="#"
-                    onClick={this.logout}
-                  >
+                  <DropdownItem href="#" onClick={this.logout}>
                     Sair
                   </DropdownItem>
                 </DropdownMenu>

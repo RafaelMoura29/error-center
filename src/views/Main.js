@@ -15,14 +15,14 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import DemoNavbar from "components/Navbars/DemoNavbar.js";
+import React from 'react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import DemoNavbar from 'components/Navbars/DemoNavbar.js'
 
-import LogsList from "./LogsList.js";
-import Log from "./Log.js";
+import LogsList from './LogsList.js'
+import Log from './Log.js'
 
-import "./style.css";
+import './style.css'
 
 class Main extends React.Component {
   constructor(props) {
@@ -30,12 +30,12 @@ class Main extends React.Component {
     this.state = {
       log: {}
     }
-    this.token = localStorage.getItem('TOKEN');
-    this.userName = localStorage.getItem('USERNAME');
+    this.token = localStorage.getItem('TOKEN')
+    this.userName = localStorage.getItem('USERNAME')
   }
 
-  componentDidMount(){
-    if(this.token === null){
+  componentDidMount() {
+    if (this.token === null) {
       this.props.history.push('/')
     }
   }
@@ -43,7 +43,11 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <DemoNavbar history={this.props.history} token={this.token} userName={this.userName}/>
+        <DemoNavbar
+          history={this.props.history}
+          token={this.token}
+          userName={this.userName}
+        />
         {/* <Row id="row-navbar">
           <Col md="12" >
             <p className="mt-3 " style={{ fontSize: '1.4em' }}>Bem vindo usuário, seu token é: fiugwfbwuywfbfwe</p>
@@ -58,8 +62,8 @@ class Main extends React.Component {
           </Switch>
         </BrowserRouter>
       </>
-    );
+    )
   }
 }
 
-export default Main;
+export default Main

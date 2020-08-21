@@ -11,6 +11,7 @@ class Profile extends React.Component {
     this.state = {
       log: {}
     }
+    this.token = localStorage.getItem('TOKEN')
   }
 
   componentDidMount() {
@@ -25,21 +26,29 @@ class Profile extends React.Component {
       match: { params }
     } = this.props
     const idLog = params.idLog
-    axios 
-      .get('https://superlogsapi20200815150510.azurewebsites.net/api/Log/' + idLog )
-      .then(({data}) => {
-        let dataLog = data.data
-        if(data.idTipoLog === 1){
-          data.tipo = "Debug"
-        }else if(data.idTipoLog === 2){
-          data.tipo = "Warning"
-        }else {
-          data.tipo = "Error"
+    axios
+      .get(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Log/' + idLog,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${this.token}`
+          }
         }
-        this.setState({log: data})
+      )
+      .then(({ data }) => {
+        let dataLog = data.data
+        if (data.idTipoLog === 1) {
+          data.tipo = 'Debug'
+        } else if (data.idTipoLog === 2) {
+          data.tipo = 'Warning'
+        } else {
+          data.tipo = 'Error'
+        }
+        this.setState({ log: data })
         console.log(data)
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error)
       })
   }
@@ -77,7 +86,9 @@ class Profile extends React.Component {
                           <img
                             alt="..."
                             className="rounded-circle"
-                            src={require(`assets/img/theme/${log.tipo || "Loading"}.jpg`)}
+                            src={require(`assets/img/theme/${
+                              log.tipo || 'Loading'
+                            }.jpg`)}
                           />
                         </a>
                       </div>
@@ -100,7 +111,9 @@ class Profile extends React.Component {
                     </Col>
                   </Row>
                   <div className="text-center mt-6">
-                    <h3>Error no {log.host} em {log.data}</h3>
+                    <h3>
+                      Error no {log.host} em {log.data}
+                    </h3>
                     <div className="h6 font-weight-300">
                       <i className="ni location_pin mr-2" />
                       Coletado por: {log.tokenUsuario}
@@ -116,15 +129,11 @@ class Profile extends React.Component {
                         <h3 className=" text-primary font-weight-light mb-2">
                           Título
                         </h3>
-                        <p>
-                          {log.titulo}
-                        </p>
+                        <p>{log.titulo}</p>
                         <h3 className=" text-primary font-weight-light mb-2">
                           Detalhes
                         </h3>
-                        <p>
-                          {log.descricao}
-                        </p>
+                        <p>{log.descricao}</p>
                       </Col>
                     </Row>
                   </div>

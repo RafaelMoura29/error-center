@@ -40,6 +40,7 @@ class LogsList extends React.Component {
       inputBusca: '',
       logs: []
     }
+    this.token = localStorage.getItem('TOKEN')
   }
 
   handleChange = (event) => {
@@ -52,10 +53,15 @@ class LogsList extends React.Component {
 
   getLogs = () => {
     const { selectAmbiente } = this.state
-    console.log(selectAmbiente)
     axios
       .get(
-        `https://superlogsapi20200815150510.azurewebsites.net/api/Log?IdAmbiente=${selectAmbiente}&OrdenarPor=0&BuscarPor=0&PesquisaCampo=%20`
+        `https://superlogsapi20200815150510.azurewebsites.net/api/Log?IdAmbiente=${selectAmbiente}&OrdenarPor=0&BuscarPor=0&PesquisaCampo=%20`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${this.token}`
+          }
+        }
       )
       .then(({ data }) => {
         console.log(data)
@@ -68,13 +74,48 @@ class LogsList extends React.Component {
 
   arquivarLog = (log, index) => {
     let logs = this.state.logs
-    /* axios
-      .put(
-        'https://superlogsapi20200815150510.azurewebsites.net/api/Log',{
-
-
+    console.log(log)
+    axios
+      .get(
+        'https://superlogsapi20200815150510.azurewebsites.net/api/Log/' +
+          log.idLog,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${this.token}`
+          }
         }
-      ) */
+      )
+      .then(({ data }) => {
+        data.status = 2
+        console.log(data)
+        axios
+          .put(
+            'https://superlogsapi20200815150510.azurewebsites.net/api/Log',
+            data,
+            {
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                Authorization: `Bearer ${this.token}`
+              }
+            }
+          )
+          .then((response) => {
+            logs.splice(index, 1)
+            this.setState({ logs })
+            alert('Log arquivado com sucesso!')
+          })
+          .catch((error) => {
+            alert(
+              'Ocorreu um erro ao arquivar o log, tente novamente em instantes!'
+            )
+          })
+      })
+      .catch((error) => {
+        alert(
+          'Ocorreu um erro ao arquivar o log, tente novamente em instantes!'
+        )
+      })
   }
 
   deletarLog = (log, index) => {
@@ -82,7 +123,13 @@ class LogsList extends React.Component {
     axios
       .delete(
         'https://superlogsapi20200815150510.azurewebsites.net/api/Log/' +
-          log.idLog
+          log.idLog,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            Authorization: `Bearer ${this.token}`
+          }
+        }
       )
       .then((response) => {
         logs.splice(index, 1)
