@@ -24,7 +24,6 @@ import {
   Input,
   Col,
   Table,
-  Button,
   Container,
   Card,
   Badge
@@ -64,13 +63,15 @@ class LogsList extends React.Component {
         }
       )
       .then(({ data }) => {
+        console.log(data)
         this.setState({ logs: data })
       })
       .catch((error) => {
       })
   }
 
-  arquivarLog = (log, index) => {
+  arquivarLog = (log, index, event) => {
+    event.target.className = "fa fa-spinner fa-spin"
     let logs = this.state.logs
     axios
       .get(
@@ -102,19 +103,29 @@ class LogsList extends React.Component {
             alert('Log arquivado com sucesso!')
           })
           .catch((error) => {
+            event.target.className = "ni ni-folder-17 icon-util"
             alert(
               'Ocorreu um erro ao arquivar o log, tente novamente em instantes!'
             )
           })
+          
       })
       .catch((error) => {
-        alert(
+            event.target.className = "ni ni-folder-17 icon-util"
+            alert(
           'Ocorreu um erro ao arquivar o log, tente novamente em instantes!'
-        )
+          )
       })
   }
 
-  deletarLog = (log, index) => {
+  ordenarLogs = () => {
+
+  }
+
+  deletarLog = (log, index, event) => {
+
+    event.target.className = "fa fa-spinner fa-spin"
+    event.target.style.fontSize = "1em"
     let logs = this.state.logs
     axios
       .delete(
@@ -133,6 +144,8 @@ class LogsList extends React.Component {
         alert('Log excluído com sucesso!')
       })
       .catch((error) => {
+        event.target.className = "ni ni-fat-remove icon-util"
+        event.target.style.fontSize = "2em"
         alert('Ocorreu um erro ao excluir o log, tente novamente em instantes!')
       })
   }
@@ -168,7 +181,10 @@ class LogsList extends React.Component {
                       <Input
                         type="select"
                         name="selectAmbiente"
-                        onChange={this.handleChange}
+                        onChange={async (event) => {
+                          await this.handleChange(event)
+                          this.getLogs()
+                        }}
                         value={this.state.selectAmbiente}
                       >
                         <option value="1">Produção</option>
@@ -181,12 +197,15 @@ class LogsList extends React.Component {
                       <Input
                         type="select"
                         name="selectTipoOrdenagem"
-                        onChange={this.handleChange}
+                        onChange={async (event) => {
+                          await this.handleChange(event)
+                          this.ordenarLogs()
+                        }}
                         value={this.state.selectTipoOrdenagem}
                       >
                         <option value="Ordenar por">Ordenar por</option>
                         <option value="Level">Level</option>
-                        <option value="Frequência">Frequência</option>
+                        <option value="Frequencia">Frequência</option>
                       </Input>
                     </Col>
 
@@ -236,7 +255,6 @@ class LogsList extends React.Component {
                             } else if (log.level === 'Warning') {
                               badge = 'warning'
                             }
-                            
                             if (log.idStatus === 1) {
                               return (
                                 <tr key={log.idLog}>
@@ -251,13 +269,13 @@ class LogsList extends React.Component {
                                   <td>
                                     <i
                                       className="ni ni-folder-17 icon-util"
-                                      onClick={() => this.arquivarLog(log, index)}
-                                    ></i>
+                                      onClick={(event) => this.arquivarLog(log, index, event)}
+                                    ></i> 
                                   </td>
                                   <td style={{ paddingTop: '10px' }}>
                                     <i
                                       className="ni ni-fat-remove icon-util"
-                                      onClick={() => this.deletarLog(log, index)}
+                                      onClick={(event) => this.deletarLog(log, index, event)}
                                       style={{ fontSize: '2em' }}
                                     ></i>
                                   </td>
