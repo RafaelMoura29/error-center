@@ -251,10 +251,10 @@ class LogsList extends React.Component {
                             let url = '/main/log-page/' + log.idLog
                             let badge = 'info'
                             let badgeDescription = "Debug"
-                            if (log.level === 1) {
+                            if (log.idTipoLog === 1) {
                               badge = 'danger'
                               badgeDescription = "Error"
-                            } else if (log.level === 2) {
+                            } else if (log.idTipoLog === 2) {
                               badge = 'warning'
                               badgeDescription = "Warning"
                             } 
