@@ -99,7 +99,7 @@ class Register extends React.Component {
         this.setState({ isLoading: false })
         console.log(error)
         alert(
-          'A senha deve conter caracteres especiais, números e letras! Caso sua senha esteja correta tente novamente em instantes'
+          'A senha deve conter caracteres especiais, números e pelo menos uma letra em maiúsculo! Caso sua senha esteja correta tente utilizar um nome de usuário e email diferentes.'
         )
       })
   }
