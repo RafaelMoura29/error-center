@@ -250,16 +250,19 @@ class LogsList extends React.Component {
                           {logs.map((log, index) => {
                             let url = '/main/log-page/' + log.idLog
                             let badge = 'info'
-                            if (log.level === 'Error') {
+                            let badgeDescription = "Debug"
+                            if (log.level === 1) {
                               badge = 'danger'
-                            } else if (log.level === 'Warning') {
+                              badgeDescription = "Error"
+                            } else if (log.level === 2) {
                               badge = 'warning'
-                            }
+                              badgeDescription = "Warning"
+                            } 
                             if (log.idStatus === 1) {
                               return (
                                 <tr key={log.idLog}>
                                   <td>
-                                    <Badge color={badge}>{log.level}</Badge>
+                                    <Badge color={badge}>{badgeDescription}</Badge>
                                   </td>
                                   <td>{log.descricao}</td>
                                   <td>{log.eventos}</td>
